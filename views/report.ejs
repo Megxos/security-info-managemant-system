@@ -1,0 +1,108 @@
+<%- include("partials/header"); -%>
+<link rel="stylesheet" href="/css/report.css">
+<div class="container mb-3" id="container">
+    <h1 class="text-center mb-5 mt-2">RECORD NEW CASE</h1>
+    <div>
+        <form name="report_form" action="/report/new" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="name">Name: </label>
+                        <input class="form-control" type="text" id="name" name="name" placeholder="Name of offender" required>
+                    </div>
+                    <div class="col-md-6">
+                         <label for="matric_no">Matric Number: </label>
+                         <input class="form-control" type="text" id="matric_no" name="matric_no"
+                             placeholder="Matriculation Number of offender" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="name">Department: </label>
+                        <input class="form-control" type="text" id="department" name="department"
+                            placeholder="Department of offender" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Gender</label>
+                        <select name="gender" id="gender" class="form-control" required>
+                            <option value="">Gender...</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                         <label for="">Description 1: </label>
+                         <div id="description">
+                             <select name="description_1" id="" class="form-control">
+                             <ul>
+                                <li><option value="">Select description...</option></li>
+                                <li class="m-3 col-md-12">
+                                    <option value="Vanderlized school property" class="border border-default p-2  wow fadeIn" id="crime">Vanderlized school property</option>
+                                </li>
+                                 <li class="m-3 col-md-12">
+                                     <option value="Exam Malpractice" class="border border-default p-2  " id="crime">Exam Malpractice</option>
+                                </li>
+                                 <li class="m-3 col-md-12">
+                                     <option value="Vanderlized school property" class="border border-default p-2 " id="crime">Vanderlized school property</option></li>
+                                 <li class="m-3 col-md-12">
+                                     <option value="Assaulted a staff" class="border border-default p-2 " id="crime">Assaulted a staff</option value=""></li>
+                                 <li class="m-3 col-md-12">
+                                     <option value="Assaulted a fellow student">Assaulted a fellow student</option>
+                                 </li>
+                                 <li class="m-3 col-md-12">
+                                     <option value="Theft">Theft</option>
+                                 </li>
+                             </ul>
+                             </select>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="filr">Add an image</label>
+                        <input type="file" id="file" class="form-control" name="image">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label for="description_2">More info / others: </label>
+                <textarea class="form-control" name="description_2" id="description_2" cols="30" rows="5"></textarea>
+            </div>
+            <div id="ratings" class="m-3">
+                <label>How would you rate the crime?</label>
+                <div class="form-group">
+                    <input type="number" name="rating" id="rating-input" style="display: none;">
+                    <span class="badge badge-secondary  p-2 rating">1</span>
+                    <span class="badge p-2 rating" value=2>2</span>
+                    <span class="badge  p-2 rating">3</span>
+                    <span class="badge  p-2 rating ">4</span>
+                    <span class="badge  p-2 rating">5</span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info btn-lg btn-block" onclick="loading()" >Save
+                <div id="save"></div>
+            </button>
+        </form>
+    </div>
+</div>
+<script>
+    const loader = document.getElementById("save")
+    let name = document.forms["report_form"]["name"].value
+    async function loading(){
+        
+        console.log(name.value)
+        if(name !== null || " " || undefined){
+            console.log("pass")
+            await loader.classList.add("spinner-border");
+        }
+    }
+</script>
+<%- include("partials/footer"); -%>

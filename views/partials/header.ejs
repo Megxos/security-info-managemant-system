@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <script src="/js/lib/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/a06d2c416b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <script src="/js/lib/bootstrap.min.js"></script>
+    <script src="/js/lib/wow.min.js"></script>
+    <link rel="stylesheet" href="/css/hamburgers.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+    <script>
+        new WOW().init()
+    </script>
+<body>
+    <nav class="nav justify-content-center" style="background-color: purple;">
+      <p style="font-weight: bold; font-size: 2em;padding: 10px;color: #f1f1f1; text-align: center;">Security Information System, FUTMINNA
+      </p>
+    </nav>
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: purple; ">
+        <div class="container">
+        <button id="menu_btn" class="navbar-toggler d-lg-none hamburger hamburger--spin-r" type="button"
+            data-toggle="collapse"
+            data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="hamburger-box">
+                <span class="hamburger-inner" style="background-color: #fff"></span>
+            </span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a href="/" class="nav-link" href="" id="home">Home </a>
+                    <!-- <button id="home" class="nav-link btn" onclick="home()">Home</button> -->
+                </li>
+                <li class="nav-item">
+                    <a href="/report" class="nav-link" href="" id="report">Report</a>
+                    <!-- <button class="nav-link btn" onclick="report()">Report</button> -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/records">Records</a>
+                    <!-- <button class="nav-link btn" onclick="records()">Records</button> -->
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="#">Contact</a>
+                        <a class="dropdown-item" href="#">About</a>
+                    </div>
+                </li>
+            </ul>
+            <div>
+                <form class="form-inline my-2 my-lg-0" method="POST" action="/search">
+                    <span style="padding: 5px;background-color: #fff;border-top-left-radius: 2mm;border-bottom-left-radius: 2mm;"><i class="fas fa-search"></i></span>
+                    <input class="search-bar" type="text" id="search-bar" name="keyword" placeholder="Type search">
+                    <span style="padding: 5px;background-color: #fff;border-top-right-radius: 2mm;border-bottom-right-radius: 2mm;">
+                        <select name="search_by" id="search_by" style="border: none;padding: 0px;background-color: #fff;color:grey;border-top-right-radius: 2mm;border-bottom-right-radius: 2mm;">
+                            <option value="name">name</option>
+                            <option value="crime">crime</option>
+                        </select>
+                    </span>
+                    <!-- <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search <div class="loading"></div></button> -->
+                </form>
+                <script src="js/search.js"></script>
+            </div>
+        </div>
+     </div>
+    </nav>
+    <% if(success && success.length > 0){%>
+        <div class="alert alert-success text-center"><%= success %></div>
+    <%}%>
+    <% if(error && error.length > 0){%>
+        <div class="alert alert-danger text-center"><%= error %></div>
+    <%}%>
+    <div class="search-data animated" id="search-data" style="">
+        <big class="text-center">Search Results</big> 
+            <div id="list" style="display:flex;flex-direction: column;">
+                <% data.forEach( (data) =>{%>
+                <p class="fadeIn animated"><a href="/details/<%= data._id%>"><%= data.name %></a></p>
+                <%}) %>
+            </div>
+        </div>
+    <style>
+        .search-bar{
+            padding: 5px;
+            border: none;
+            color: #3c3c3c;
+        }
+        .search-bar:focus{
+            outline: none;
+            background-color: #f7f7f7;
+            border: none;
+        }
+        select:focus{
+            border: none;
+            background-color: #fff;
+        }
+        .search-data{
+            padding: 10px;
+            display: none;
+            position: relative;
+            height: auto;
+            width:100%;
+            background-color: orange;
+            color: #fff;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #list a{
+            color: #f1f1f1 !important;
+        }
+    </style>
+    </script>

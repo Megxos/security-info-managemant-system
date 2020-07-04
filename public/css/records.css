@@ -1,0 +1,14 @@
+body {
+    background: url("/img/background3.jpg") center center fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+p{
+    margin: 0;
+    padding: 0;
+    word-wrap: break-word;
+}
+.details{
+    width: 200px;
+    word-wrap: break-word;
+}

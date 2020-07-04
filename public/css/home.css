@@ -1,0 +1,85 @@
+body{
+    background: url("/img/background3.jpg") center center fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+#recently_added {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    background-color: #fff;
+    width: 100%;
+    color: #f1f1f1;
+}
+
+#top_offenders {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    width: 100%;
+}
+nav {
+    text-transform: uppercase;
+}
+
+.navbar-dark .container {
+    border-bottom: 1px solid #f1f1f1;
+    margin-bottom: 50px;
+}
+
+#description li span {
+    width: 100%
+}
+
+#report_container {
+    display: none;
+}
+#recent, #top{
+    position: relative;
+}
+#recent #details{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #800080c4;
+    height: 40%;
+    margin: 0;
+    padding: 5px;
+    font-size: smaller;
+}
+#recent .info{
+    position: absolute;
+    bottom: 0;
+    color: #f1f1f1 !important;
+}
+#recent p{
+    margin: 0 !important;
+}
+/* TOP STARTS HERE */
+
+#top #details {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #800080c4;
+    height: 40%;
+    margin: 0;
+    padding: 5px;
+    font-size: smaller;
+}
+
+#top .info {
+    position: absolute;
+    bottom: 0;
+    color: #f1f1f1 !important;
+}
+
+#top p {
+    margin: 0 !important;
+}
+
+
+.img-thumbnail{
+    padding: 0 !important;
+}

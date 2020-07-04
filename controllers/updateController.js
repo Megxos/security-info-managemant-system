@@ -1,0 +1,24 @@
+const router = require("express").Router();
+const Case = require("../models/cases");
+const methodOverride = require("method-override");
+
+router.use(methodOverride("_method"))
+router.use(require("body-parser").urlencoded({
+    extended: true
+}))
+
+router.put("/update/:id", (req, res)=>{
+    const data = req.body.content;
+    const id = req.params.id
+    Case.findByIdAndUpdate(id, data, {
+        new: true, useFindAndModify: false
+    }).then(success => {
+        req.flash("success", "updated")
+        res.redirect("back")
+    }).catch(error => {
+        req.flash("error", "something went wrong")
+        res.redirect("back")
+    })
+})
+
+module.exports = router;

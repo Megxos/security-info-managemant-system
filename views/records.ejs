@@ -1,0 +1,28 @@
+<%- include("partials/header"); -%>
+<link rel="stylesheet" href="/css/records.css">
+<div class="container-fluid">
+  <div class="all" style="display: flex;flex-wrap: wrap;">
+    <% for(var i = 0; i < cases.length; i++){%>
+     <a href="/dashboard/<%= cases[i]._id %>">
+       <div class="section" style="display: flex;margin: 7px;background: #800080c4;color:#fff;">
+         <div style="box-shadow: none !important;border: none;">
+           <img src="<%= cases[i].image.url %>" alt="" class="img-thumbnail rounded">
+           <div class="details" style="padding: 10px;">
+             <p>
+               <strong>Name:</strong> <span><%= cases[i].name%></span>
+             </p>
+             <p>
+               <strong>departmant:</strong> <span><%= cases[i].department%></span>
+             </p>
+             <p>
+               <strong>Matric NO:</strong> <span><%= cases[i].matric_number%></span>
+             </p>
+           </div>
+         </div>
+       </div>
+    </a>
+    <%}%>
+  </div>
+</div>
+
+<%- include("partials/footer"); -%>
