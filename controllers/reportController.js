@@ -1,14 +1,15 @@
 const router = require("express").Router();
 const Case = require("../models/cases");
-const imageParser = require("./imageParser");
+const imageParser = require("./imageParser"),
+            auth = require("../auth/auth").isAdmin;
 
 router.use(require("body-parser").urlencoded({ extended: true }))
 
-router.get("/report", function (req, res) {
+router.get("/report", auth, function (req, res) {
     res.render("report", { title: "Report" })
 });
 
-router.post("/report/new", imageParser.single("image"), function (req, res) {
+router.post("/report/new", auth, imageParser.single("image"), function (req, res) {
 
     var name = req.body.name
     var matric_number = req.body.matric_no

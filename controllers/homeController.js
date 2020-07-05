@@ -1,11 +1,12 @@
 const router  = require("express").Router(),
-            Case = require("../models/cases");
+            Case = require("../models/cases"),
+            auth = require("../auth/auth").isAdmin;
 
 
-router.get("/", function (req, res) {
+router.get("/", auth, function (req, res) {
     res.redirect("/home")
 })
-router.get("/home", function (req, res) {
+router.get("/home", auth, function (req, res) {
    Case.find({}, (err, users)=>{
        if(err){
            req.flash("error", "Error retrieving data")

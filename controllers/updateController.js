@@ -1,13 +1,14 @@
 const router = require("express").Router();
 const Case = require("../models/cases");
-const methodOverride = require("method-override");
+const methodOverride = require("method-override"),
+auth = require("../auth/auth").isAdmin;
 
 router.use(methodOverride("_method"))
 router.use(require("body-parser").urlencoded({
     extended: true
 }))
 
-router.put("/update/:id", (req, res)=>{
+router.put("/update/:id", auth, (req, res)=>{
     const data = req.body.content;
     const id = req.params.id
     Case.findByIdAndUpdate(id, data, {

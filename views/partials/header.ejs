@@ -18,12 +18,12 @@
     </script>
 <body>
     <nav class="nav justify-content-center" style="background-color: purple;">
-      <p style="font-weight: bold; font-size: 2em;padding: 10px;color: #f1f1f1; text-align: center;">Security Information System, FUTMINNA
+      <p style="font-weight: bold; font-size: 1.7em;padding: 10px;color: #f1f1f1; text-align: center;" id="top_name">Security Information System, FUTMINNA
       </p>
     </nav>
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: purple; ">
         <div class="container">
-        <button id="menu_btn" class="navbar-toggler d-lg-none hamburger hamburger--spin-r" type="button"
+        <button id="menu_btn" class="navbar-toggler d-lg-none hamburger hamburger--spin-r text-right" type="button"
             data-toggle="collapse"
             data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +50,11 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
                         <a class="dropdown-item" href="#">Contact</a>
                         <a class="dropdown-item" href="#">About</a>
+                        <% if(current_user){%>
+                            <a class="dropdown-item" href="/logout"><button class="btn btn-danger">Logout</button></a>
+                        <%} else{%>
+                            <a class="dropdown-item" href="/login"><button class="btn btn-success">Log in</button></a>
+                        <%}%>
                     </div>
                 </li>
             </ul>
@@ -71,11 +76,14 @@
      </div>
     </nav>
     <% if(success && success.length > 0){%>
-        <div class="alert alert-success text-center"><%= success %></div>
+        <div class="alert alert-success text-center fadeIn animated" id="flash"><%= success %></div>
     <%}%>
     <% if(error && error.length > 0){%>
-        <div class="alert alert-danger text-center"><%= error %></div>
+        <div class="alert alert-danger text-center fadeIn animated" id="flash"><%= error %></div>
     <%}%>
+    <% if(warning && warning.length > 0){%>
+        <div class="alert alert-warning text-center fadeIn animated" id="flash"><%= warning %></div>
+    <%}%>   
     <div class="search-data animated" id="search-data" style="">
         <big class="text-center">Search Results</big> 
             <div id="list" style="display:flex;flex-direction: column;">
@@ -114,4 +122,12 @@
             color: #f1f1f1 !important;
         }
     </style>
+    <script>
+        const targer = document.getElementById("flash")
+        if(targer.textContent.length > 0){
+            function fadeOut(){
+                targer.style.display = "none"
+            }
+            setTimeout(fadeOut, 3000)
+        }
     </script>
