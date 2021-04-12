@@ -1,136 +1,199 @@
 <%- include("partials/header"); -%>
-<link rel="stylesheet" href="/css/dashboard.css">
+<link rel="stylesheet" href="/css/dashboard.css" />
 
 <div class="main">
-    <div class="left-menu">
-        <div class="profile-photo">
-            <img src="<%= detail.image.url %>" alt="" class="rounded-circle" style="background-color: grey;" id="photo">
-        </div>
-        <div class="actions">
-            <ul>
-                <li id="li_profile">
-                    <button onclick="getProfile()"><i class="fas fa-user"></i> Profile</button>
-                </li>
-                <li id="li_history">
-                    <button onclick="getProfile()"><i class="fas fa-history"></i> History</button>
-                </li>
-                <li id="li_settings">
-                    <button type="button" class="" data-toggle="modal" data-target="#modelId"><i class="fas fa-cog"></i> Settings</button>
-                </li>
-            </ul>
-        </div>
+  <div class="left-menu">
+    <div class="profile-photo">
+      <img
+        src="data:<%= detail.image.contentType%>;base64 ,<%= detail.image.buffer.toString('base64') %>"
+        alt=""
+        class="rounded-circle"
+        style="background-color: grey"
+        id="photo"
+      />
     </div>
-    <div class="details-dash" id="details-dash">
-        <div class="profile" id="profile">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="info">
-                        <div class="icon">
-                            <span class="text-primary icon">
-                                <i class="fas fa-user fa-7x"></i>
-                                <p class="title">Profile</p>
-                            </span>
-                        </div>
-                        <div class="details">
-                            <p>Name: <span><%= detail.name%></span></p>
-                            <p>Gender: <span><%= detail.gender%></span></p>
-                            <p>Matric Number: <span><%= detail.matric_number%></span></p>
-                            <p>Department: <span><%= detail.department%></span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info">
-                        <div class="icon">
-                            <span class="text-warning">
-                                <i class="fas fa-info-circle fa-7x"></i>
-                                <p>Crime Info</p>
-                            </span>
-                        </div>
-                        <div class="details">
-                            <p>Crime: <span><%= detail.description_1%></span></p>
-                            <p><span>Description: </span> <%= detail.description_2 %></p>
-                            <p><span>Rating: </span> <%= detail.rating %></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="info">
-                        <div class="icon">
-                            <span class="text-scondary">
-                                <i class="fas fa-chart-pie fa-7x"></i>
-                                <p>percentage contribution to total crimes</p>
-                            </span>
-                        </div>
-                        <div class="details">
-                            <p class="text-center" style="font-size: xx-large;line-height: 300px;">40%</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="info">
-                        <div class="icon">
-                            <% if(detail.is_open == 1){%>
-                                <span class="text-danger">
-                                    <i class="fas fa-unlock fa-7x"></i>
-                                    <p>status</p>
-                                </span>
-                            <% }else{%>
-                                <span class="text-success">
-                                    <i class="fas fa-lock fa-7x"></i>
-                                    <p>status</p>
-                                </span>
-                            <%} %>
-                        </div>
-                        <div class="details">
-                             <% if(detail.is_open == true){%>
-                                <p class="text-center text-danger" style="font-size: xx-large;line-height: 300px;">Open</p>
-                             <%}else{%>
-                                <p class="text-center text-success" style="font-size: xx-large;line-height: 300px;">Closed</p>
-                             <%} %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Settings</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            <form action="/update/<%= detail._id %>?_method=PUT" method="POST">
-                                <div class="form-group">
-                                    <label for="status">Status</label>
-                                    <select name="content[is_open]" id="status" class="form-control">
-                                        <% if(detail.is_open == 1){%>
-                                            <option value="">Open</option>
-                                        <%}else{%>
-                                            <option value="">Closed</option>
-                                        <%} %>
-                                        <option value="1">Open</option>
-                                        <option value="0">Closed</option>
-                                    </select>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+    <p style="text-align: center; font-weight: bold; font-size: larger">
+      <%= detail.name %>
+    </p>
+    <div class="actions">
+      <ul>
+        <li id="li_profile" class="selected-border">
+          <button onclick="getProfile()">
+            <i class="fas fa-user"></i> Profile
+          </button>
+        </li>
+        <li id="li_history">
+          <button onclick="getProfile()">
+            <i class="fas fa-history"></i> History
+          </button>
+        </li>
+        <li id="li_settings">
+          <button
+            type="button"
+            class=""
+            data-toggle="modal"
+            data-target="#modelId"
+          >
+            <i class="fas fa-cog"></i> Settings
+          </button>
+        </li>
+        <li id="li_new">
+          <a href="/addreport/<%= detail._id%>">
+            <button type="button" class="">
+              <i class="fas fa-plus"></i> Add new report
+            </button>
+          </a>
+        </li>
+      </ul>
     </div>
+  </div>
+  <div class="details-dash" id="details-dash">
+    <div class="profile" id="profile">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="info">
+            <div class="icon">
+              <span class="text-primary icon">
+                <i class="fas fa-user fa-7x"></i>
+                <p class="title"><strong>Profile</strong></p>
+              </span>
+            </div>
+            <div class="details">
+              <p><strong>Name:</strong> <span><%= detail.name%></span></p>
+              <p><strong>Gender:</strong> <span><%= detail.gender%></span></p>
+              <p>
+                <strong>Matric Number:</strong>
+                <span><%= detail.matric_number%></span>
+              </p>
+              <p>
+                <strong>Department:</strong>
+                <span><%= detail.department%></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="info">
+            <div class="icon">
+              <span class="text-warning">
+                <i class="fas fa-info-circle fa-7x"></i>
+                <p><strong>Crime Info</strong></p>
+              </span>
+            </div>
+            <div class="details">
+              <p>
+                <strong>Crime:</strong> <span><%= detail.description_1%></span>
+              </p>
+              <p>
+                <span><strong>Description:</strong> </span> <%=
+                detail.description_2 %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="info">
+            <div class="icon">
+              <% if(detail.is_open == 1){%>
+              <span class="text-danger">
+                <i class="fas fa-unlock fa-7x"></i>
+                <p><strong>Status</strong></p>
+              </span>
+              <% }else{%>
+              <span class="text-success">
+                <i class="fas fa-lock fa-7x"></i>
+                <p>status</p>
+              </span>
+              <%} %>
+            </div>
+            <div class="details">
+              <% if(detail.is_open == true){%>
+              <p
+                class="text-center text-danger"
+                style="font-size: xx-large; line-height: 300px"
+              >
+                <strong>Open</strong>
+              </p>
+              <%}else{%>
+              <p
+                class="text-center text-success"
+                style="font-size: xx-large; line-height: 300px"
+              >
+                <strong>Closed</strong>
+              </p>
+              <%} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modelId"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modelTitleId"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Settings</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <form
+                action="/update/<%= detail._id %>?_method=PUT"
+                method="POST"
+              >
+                <div class="form-group">
+                  <label for="status">Update Status</label>
+                  <select
+                    name="content[is_open]"
+                    id="status"
+                    class="form-control"
+                    required
+                  >
+                    <option default>Select...</option>
+                    <option value="1">Open</option>
+                    <option value="0">Closed</option>
+                  </select>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<script>
+  const actions = $(".actions");
+
+  $(".actions li").on("click", function () {
+    $(".actions li").removeClass("selected-border");
+    $(this).addClass("selected-border");
+  });
+</script>
 <%- include("partials/footer"); -%>

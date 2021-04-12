@@ -1,25 +1,38 @@
 <%- include("partials/header"); -%>
-<link rel="stylesheet" href="/css/records.css">
+<link rel="stylesheet" href="/css/records.css" />
 <div class="container-fluid">
-  <div class="all" style="display: flex;flex-wrap: wrap;">
+  <div class="filter">
+    <form action="">
+      <select name="filter" id="filter">
+        <option value="open">Open</option>
+        <option value="closed">Closed</option>
+      </select>
+      <input type="date" name="from" id="from" />
+      <input type="date" name="to" id="to" />
+      <button>Filter</button>
+    </form>
+  </div>
+  <div class="all" style="display: flex; flex-wrap: wrap">
     <% for(var i = 0; i < cases.length; i++){%>
-     <a href="/dashboard/<%= cases[i]._id %>">
-       <div class="section" style="display: flex;margin: 7px;background: #800080c4;color:#fff;">
-         <div style="box-shadow: none !important;border: none;">
-           <img src="<%= cases[i].image.url %>" alt="" class="img-thumbnail rounded">
-           <div class="details" style="padding: 10px;">
-             <p>
-               <strong>Name:</strong> <span><%= cases[i].name%></span>
-             </p>
-             <p>
-               <strong>departmant:</strong> <span><%= cases[i].department%></span>
-             </p>
-             <p>
-               <strong>Matric NO:</strong> <span><%= cases[i].matric_number%></span>
-             </p>
-           </div>
-         </div>
-       </div>
+    <a href="/dashboard/<%= cases[i]._id %>">
+      <div
+        style="margin: 7px; background: rgba(255, 255, 255, 0.95); color: #000a"
+      >
+        <div class="section" style="box-shadow: 0 0 0.8px #000a; border: none">
+          <img
+            src="data:<%= cases[i].image.contentType%>;base64 ,<%= cases[i].image.buffer.toString('base64') %>"
+            alt=""
+            class="img-thumbnail"
+          />
+          <div class="details" style="padding: 10px">
+            <p><strong>Name:</strong> <span><%= cases[i].name%></span></p>
+            <p>
+              <strong>Matric NO:</strong>
+              <span><%= cases[i].matric_number%></span>
+            </p>
+          </div>
+        </div>
+      </div>
     </a>
     <%}%>
   </div>

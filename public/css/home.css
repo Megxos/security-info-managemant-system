@@ -1,5 +1,4 @@
 body{
-    background: url("/img/background3.jpg") center center fixed;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -19,14 +18,6 @@ body{
     flex-direction: row;
     width: 100%;
 }
-nav {
-    text-transform: uppercase;
-}
-
-.navbar-dark .container {
-    border-bottom: 1px solid #f1f1f1;
-    margin-bottom: 50px;
-}
 
 #description li span {
     width: 100%
@@ -38,27 +29,30 @@ nav {
 #recent, #top{
     position: relative;
 }
-#recent #details{
+#details{
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: #800080c4;
-    height: 40%;
+    /* background-color: #800080c4; */
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #000a;
+    height: 30%;
     margin: 0;
     padding: 5px;
     font-size: smaller;
 }
-#recent .info{
+.info{
     position: absolute;
     bottom: 0;
-    color: #f1f1f1 !important;
+    color: #000a !important;
+    padding-bottom: 5px;
 }
-#recent p{
+#recent p, #top p{
     margin: 0 !important;
 }
 /* TOP STARTS HERE */
 
-#top #details {
+/* #top #details {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -82,4 +76,5 @@ nav {
 
 .img-thumbnail{
     padding: 0 !important;
-}
+    border-radius: 0;
+} */

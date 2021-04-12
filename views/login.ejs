@@ -1,39 +1,79 @@
-<%- include("partials/header"); -%>
-<div class="register container">
-    <div class="container">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/auth.css" />
+  </head>
+  <body>
+    <div class="header">
+      <img src="/img/logo.png" alt="" width="50px" />
+      <span class="desc">Security Information System, FUTMINNA</span>
+    </div>
+    <div class="auth-container">
+      <% if(success && success.length > 0){%>
+      <div class="alert alert-success text-center fadeIn animated" id="flash">
+        <%= success %>
+      </div>
+      <%}%> <% if(error && error.length > 0){%>
+      <div class="alert alert-danger text-center fadeIn animated" id="flash">
+        <%= error %>
+      </div>
+      <%}%> <% if(warning && warning.length > 0){%>
+      <div class="alert alert-warning text-center fadeIn animated" id="flash">
+        <%= warning %>
+      </div>
+      <%}%>
+      <div class="container">
         <form action="/login" method="POST">
-            <h2 class="text-center mt-4">Admin Login</h2>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" id="username" class="input form-control">
-                    </div>
-                </div>
+          <h2 class="text-center mt-4">Login</h2>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  value="Admin"
+                  class="input form-control"
+                />
+              </div>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password"class="input form-control">
-            </div>
-            <button id="add-me">Put me back in</button>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              value="password"
+              id="password"
+              class="input form-control"
+            />
+          </div>
+          <button id="add-me">Put me back in</button>
         </form>
         <div class="text-center mt-2">
-            <p class="text-center">Or <a href="/register">register</a></p>
+          <p class="text-center">Or <a href="/register">register</a></p>
         </div>
+      </div>
     </div>
-</div>
-<style>
-    #add-me {
+    <style>
+      #add-me {
         width: 100%;
         border: none;
         background-color: purple;
         color: #fff;
         border-radius: 2mm;
         padding: 10px;
-    }
+      }
 
-    #add-me:hover {
+      #add-me:hover {
         background-color: #ce06ce;
-    }
-</style>
-<%- include("partials/footer"); -%>
+      }
+    </style>
+  </body>
+</html>

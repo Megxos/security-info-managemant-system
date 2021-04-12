@@ -14,19 +14,18 @@ router.post("/search", (req, res) => {
             Case.find({}, (err, results) => {
                 if (err) {
                     req.flash("error", "Something went wrong! Please try again.")
-                    res.redirect("back")
+                    res.redirect("back");
                 }
                 matches = [];
                 for (var i = 0; i < results.length; i++) {
                     if (results[i].name.includes(keyword)) {
-                        matches.push(results[i])
+                        matches.push(results[i]);
                     }
                 }
                 if (matches.length == 0) matches = null;
-                req.flash("data", matches)
-                res.redirect("back");
+                res.send(matches);
             })
-        } else {
+        } else if(filter == "crime") {
             Case.find({}, (err, results) => {
                 if (err) {
                     req.flash("error", "Something went wrong! Please try again.")
@@ -35,13 +34,27 @@ router.post("/search", (req, res) => {
                 matches = [];
                 for (var i = 0; i < results.length; i++) {
                     if (results[i].description_1 && results[i].description_1.includes(keyword) || results[i].description_2 && results[i].description_2.includes(keyword)) {
-                        matches.push(results[i])
+                        matches.push(results[i]);
                     }
                 }
                 if (matches.length == 0) matches = null;
-                req.flash("data", matches)
-                res.redirect("back");
-            })
+                res.send(matches)
+            });
+        }else{
+            Case.find({}, (err, results) => {
+                if (err) {
+                    req.flash("error", "Something went wrong! Please try again.");
+                    res.redirect("back");
+                }
+                matches = [];
+                for (var i = 0; i < results.length; i++) {
+                    if (results[i].matric_number && results[i].matric_number.includes(keyword)) {
+                        matches.push(results[i]);
+                    }
+                }
+                if (matches.length == 0) matches = null;
+                res.send(matches);
+            });
         }
     }
 

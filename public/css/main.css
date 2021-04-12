@@ -1,16 +1,36 @@
-body{
-    color: #3c3c3c;
-    height: 100vh;
+body {
+  color: #3c3c3c;
+  height: 100vh;
 }
-h1{
-    color: #3c3c3c;
-    font-weight: 800 !important;
+h1 {
+  color: #3c3c3c;
+  font-weight: 800 !important;
 }
-li{
-    list-style: none;
+li {
+  list-style: none;
 }
-.img-thumbnail{
-    height:200px !important;
-    width:200px;
-    background-color: turquoise !important;
+.img-thumbnail {
+  width: 200px;
+  border: none;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+.section {
+  display: grid !important;
+  grid-template-columns: 150px auto;
+}
+.active {
+  border-left: 4px solid #fff;
+  color: #fff;
+}
+nav * {
+  transition: 0.1s linear;
+}
+
+.navbar-dark .container {
+  margin-bottom: 0px;
+}
+#menu_btn:focus {
+  outline: none !important;
+  background-color: rgb(185, 4, 185);
 }

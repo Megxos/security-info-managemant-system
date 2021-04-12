@@ -1,68 +1,66 @@
 <%- include("partials/header"); -%>
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/home.css" />
 <div class="container wow fadeIn pt-3" id="container ">
-        <div class="container" id="recently_added mb-5">
-            <div class="row">
-                <div class="col-md-12">
-                <h1 class="" style="font-size: x-large;">Recently Added Records</h1>
-                    <% if(recentFive && recentFive.length > 0){%>
-                        <% for(var i = recentFive.length - 1; i >= 0; i--){%>
-                            <a href="/dashboard/<%= recentFive[i]._id %>">
-                                <div class="img-thumbnail rounded float-left ml-3 mb-2" id="recent">
-                                    <img src="<%= recentFive[i].image.url %>" alt="" class="img-thumbnail">
-                                    <div id="details">
-                                            <div class="info">
-                                                <p style="width: 100% !important;">
-                                                    <strong>Name: </strong><%= recentFive[i].name %>
-                                                </p>
-                                                <p style="width: 100%">
-                                                    <strong>Reported: </strong><%= recentFive[i].date_reported.toDateString() %>
-                                                </p>
-                                                <p style="width: 100%">
-                                                    <strong>Rating: </strong><%= recentFive[i].rating %>
-                                                </p>
-                                            </div>
-                                    </div>
-                                </div>
-                            </a>
-                        <%} %>
-                    <%}else{%>
-                            <p>No data yet</p>
-                    <%} %>
-                </div>
+  <div class="container" id="recently_added mb-5">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="pb-3" style="font-size: x-large">Recently Added Records</h1>
+        <% if(recentFive && recentFive.length > 0){%> <% for(var i =
+        recentFive.length - 1; i >= 0; i--){%>
+        <a href="/dashboard/<%= recentFive[i]._id %>">
+          <div class="img-thumbnail float-left ml-3 mb-2" id="recent">
+            <img
+              src="data:<%= recentFive[i].image.contentType%>;base64 ,<%= recentFive[i].image.buffer.toString('base64') %>"
+              alt="image"
+              class="img-thumbnail"
+            />
+            <div id="details">
+              <div class="info">
+                <p style="width: 100% !important">
+                  <strong>Name: </strong><%= recentFive[i].name %>
+                </p>
+                <p style="width: 100%">
+                  <strong>Reported: </strong><%=
+                  recentFive[i].date_reported.toDateString() %>
+                </p>
+              </div>
             </div>
-        </div>
-        <div class="container mt-5" id="top_offenders">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="" style="font-size: x-large;">Top Offenders</h1>
-                    <% if( topFive && topFive.length > 0){%>
-                        <% for(var i in topFive){%>
-                            <a href="/details/<%= topFive[i]._id%>">
-                                <div class="img-thumbnail rounded float-left ml-3 mb-2" id="top">
-                                    <img src="<%= topFive[i].image.url%>" alt="" class="img-thumbnail">
-                                    <div id="details">
-                                      <div class="info">
-                                            <p>
-                                                <strong>Name: </strong><%= topFive[i].name%>
-                                            </p>
-                                            <p>
-                                                <strong>Reported:
-                                                </strong><%= topFive[i].date_reported.toDateString() %>
-                                            </p>
-                                            <p>
-                                                <strong>Rating: </strong><span><%= topFive[i].rating%></span>
-                                            </p>
-                                      </div>
-                                    </div>
-                                </div>
-                            </a>
-                        <%} %>
-                        <%} else{%>
-                            <p>No data yet</p>
-                        <%}%>
-                </div>
-            </div>
-        </div>
+          </div>
+        </a>
+        <%} %> <%}else{%>
+        <p>No data yet</p>
+        <%} %>
+      </div>
     </div>
+  </div>
+  <div class="container mt-5" id="top_offenders">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="pb-3" style="font-size: x-large">Top Offenders</h1>
+        <% if( topFive && topFive.length > 0){%> <% for(var i in topFive){%>
+        <a href="/details/<%= topFive[i]._id%>">
+          <div class="img-thumbnail rounded float-left ml-3 mb-2" id="top">
+            <img
+              src="data:<%= topFive[i].image.contentType%>;base64 ,<%= topFive[i].image.buffer.toString('base64') %>"
+              alt=""
+              class="img-thumbnail"
+            />
+            <div id="details">
+              <div class="info">
+                <p><strong>Name: </strong><%= topFive[i].name%></p>
+                <p>
+                  <strong>Reported: </strong><%=
+                  topFive[i].date_reported.toDateString() %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <%} %> <%} else{%>
+        <p>No data yet</p>
+        <%}%>
+      </div>
+    </div>
+  </div>
+</div>
 <%- include("partials/footer"); -%>

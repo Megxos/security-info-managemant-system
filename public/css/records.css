@@ -1,14 +1,32 @@
 body {
-    background: url("/img/background3.jpg") center center fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-p{
-    margin: 0;
-    padding: 0;
-    word-wrap: break-word;
+p {
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
 }
-.details{
-    width: 200px;
-    word-wrap: break-word;
+.details {
+  width: 200px;
+  word-wrap: break-word;
+}
+.img-thumbnail {
+  max-height: 150px !important;
+  max-width: 150px !important;
+}
+.filter {
+  margin: 20px auto;
+}
+.filter select {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fbfbfb;
+  outline: none;
+}
+.filter button {
+  border: none;
+  padding: 7px;
+  border-radius: 10px;
 }

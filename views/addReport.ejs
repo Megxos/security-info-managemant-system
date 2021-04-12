@@ -1,0 +1,109 @@
+<%- include("partials/header"); -%>
+<link rel="stylesheet" href="/css/report.css">
+<div class="container mb-3" id="container">
+    <h1 class="text-center mb-3 mt-2">RECORD NEW CASE</h1>
+    <div>
+        <form name="report_form" action="/report/new" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="name">Name: </label>
+                        <input class="form-control" type="text" id="name" value="<%= report.name %>" readonly name="name" placeholder="Name of offender"
+                            required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="matric_no">Matric Number: </label>
+                        <input class="form-control" type="text" id="matric_no" value="<%= report.matric_number %>" name="matric_no" readonly placeholder="Matriculation Number of offender" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="name">Department: </label>
+                        <input class="form-control" type="text" id="department" readonly value="<%= report.department %>" name="department"
+                            placeholder="Department of offender" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Gender</label>
+                        <select name="gender" id="gender" class="form-control" readonly disabled required>
+                            <option value="<%= report.gender %>"><%= report.gender %></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="">Description: </label>
+                        <div id="description">
+                            <select name="description_1" id="" class="form-control" required>
+                                <ul>
+                                    <li>
+                                        <option value="">Select description...</option>
+                                    </li>
+                                    <li class="m-3 col-md-12">
+                                        <option value="Vanderlized school property"
+                                            class="border border-default p-2  wow fadeIn" id="crime">Vanderlized school
+                                            property</option>
+                                    </li>
+                                    <li class="m-3 col-md-12">
+                                        <option value="Exam Malpractice" class="border border-default p-2  " id="crime">
+                                            Exam Malpractice</option>
+                                    </li>
+                                    <li class="m-3 col-md-12">
+                                        <option value="Vanderlized school property" class="border border-default p-2 "
+                                            id="crime">Vanderlized school property</option>
+                                    </li>
+                                    <li class="m-3 col-md-12">
+                                        <option value="Assaulted a staff" class="border border-default p-2 " id="crime">
+                                            Assaulted a staff</option value="">
+                                    </li>
+                                    <li class="m-3 col-md-12">
+                                        <option value="Assaulted a fellow student">Assaulted a fellow student</option>
+                                    </li>
+                                    <li class="m-3 col-md-12">
+                                        <option value="Theft">Theft</option>
+                                    </li>
+                                    <li class="m-3 col-md-12">
+                                        <option value="Theft">Others</option>
+                                    </li>
+                                </ul>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="filr">Add an image</label>
+                        <input type="file" id="file" class="form-control" name="image">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label for="description_2">More info / others: </label>
+                <textarea class="form-control mb-2" name="description_2" id="description_2" cols="30"
+                    rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-info btn-lg btn-block" onclick="loading()">Save
+                <div id="save"></div>
+            </button>
+        </form>
+    </div>
+</div>
+<script>
+    const loader = document.getElementById("save")
+    const form = document.forms;
+    console.log(form);
+    let name = document.forms["report_form"]["name"].value
+
+    function loading() {
+        if (name != null && name.trim() != "" || undefined) {
+            console.log("pass")
+            loader.classList.add("spinner-border");
+        }
+    }
+</script>
+<%- include("partials/footer"); -%>

@@ -8,11 +8,11 @@ module.exports = connection = () => {
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true
     },
     (err, success) => {
       if (err) {
         console.log("Database connection failed!");
-        // process.exit();
       } else {
         console.log("Database connection success");
       }

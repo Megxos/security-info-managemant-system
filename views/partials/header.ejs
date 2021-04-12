@@ -1,133 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/logo.png" />
     <title><%= title %></title>
     <script src="/js/lib/jquery-3.4.1.js"></script>
-    <script src="https://kit.fontawesome.com/a06d2c416b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/animate.css">
+    <script
+      src="https://kit.fontawesome.com/a06d2c416b.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/animate.css" />
     <script src="/js/lib/bootstrap.min.js"></script>
     <script src="/js/lib/wow.min.js"></script>
-    <link rel="stylesheet" href="/css/hamburgers.min.css">
-    <link rel="stylesheet" href="/css/bootstrap.css">
-</head>
-    <script>
-        new WOW().init()
-    </script>
-<body>
-    <nav class="nav justify-content-center" style="background-color: purple;">
-      <p style="font-weight: bold; font-size: 1.7em;padding: 10px;color: #f1f1f1; text-align: center;" id="top_name">Security Information System, FUTMINNA
-      </p>
+    <link rel="stylesheet" href="/css/hamburgers.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+  </head>
+  <script>
+    new WOW().init();
+  </script>
+  <body>
+    <nav class="nav justify-content-center" style="background-color: purple">
+      <a href="/">
+        <p
+          style="
+            font-weight: bold;
+            font-size: 1.7em;
+            padding: 10px;
+            color: #f1f1f1;
+            text-align: center;
+          "
+          id="top_name"
+        >
+          <img src="/img/logo.png" alt="logo" style="width: 50px" />
+          Security Information System, FUTMINNA
+        </p>
+      </a>
     </nav>
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: purple; ">
-        <div class="container">
-        <button id="menu_btn" class="navbar-toggler d-lg-none hamburger hamburger--spin-r text-right" type="button"
-            data-toggle="collapse"
-            data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="hamburger-box">
-                <span class="hamburger-inner" style="background-color: #fff"></span>
-            </span>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark"
+      style="background-color: purple"
+    >
+      <div class="container">
+        <button
+          id="menu_btn"
+          class="navbar-toggler d-lg-none hamburger hamburger--spin-r text-right"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapsibleNavId"
+          aria-controls="collapsibleNavId"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="hamburger-box">
+            <span class="hamburger-inner" style="background-color: #fff"></span>
+          </span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a href="/" class="nav-link" href="" id="home">Home </a>
-                    <!-- <button id="home" class="nav-link btn" onclick="home()">Home</button> -->
-                </li>
-                <li class="nav-item">
-                    <a href="/report" class="nav-link" href="" id="report">Report</a>
-                    <!-- <button class="nav-link btn" onclick="report()">Report</button> -->
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/records">Records</a>
-                    <!-- <button class="nav-link btn" onclick="records()">Records</button> -->
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Contact</a>
-                        <a class="dropdown-item" href="#">About</a>
-                        <% if(current_user){%>
-                            <a class="dropdown-item" href="/logout"><button class="btn btn-danger">Logout</button></a>
-                        <%} else{%>
-                            <a class="dropdown-item" href="/login"><button class="btn btn-success">Log in</button></a>
-                        <%}%>
-                    </div>
-                </li>
-            </ul>
-            <div>
-                <form class="form-inline my-2 my-lg-0" method="POST" action="/search">
-                    <span style="padding: 5px;background-color: #fff;border-top-left-radius: 2mm;border-bottom-left-radius: 2mm;"><i class="fas fa-search"></i></span>
-                    <input class="search-bar" type="text" id="search-bar" name="keyword" placeholder="Type search">
-                    <span style="padding: 5px;background-color: #fff;border-top-right-radius: 2mm;border-bottom-right-radius: 2mm;">
-                        <select name="search_by" id="search_by" style="border: none;padding: 0px;background-color: #fff;color:grey;border-top-right-radius: 2mm;border-bottom-right-radius: 2mm;">
-                            <option value="name">name</option>
-                            <option value="crime">crime</option>
-                        </select>
-                    </span>
-                    <!-- <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search <div class="loading"></div></button> -->
-                </form>
-                <script src="js/search.js"></script>
-            </div>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a href="/" class="nav-link active" href="" id="home">Home </a>
+            </li>
+            <li class="nav-item">
+              <a href="/report" class="nav-link" href="" id="report">Report</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/records" id="records">Records</a>
+            </li>
+            <li class="nav-item dropdown" id="dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="dropdownId"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >More</a
+              >
+              <div class="dropdown-menu" aria-labelledby="dropdownId">
+                <a class="dropdown-item" href="#">Contact</a>
+                <a class="dropdown-item" href="#">About</a>
+                <% if(current_user){%>
+                <a class="dropdown-item" href="/logout"
+                  ><button class="btn btn-danger">Logout</button></a
+                >
+                <%} else{%>
+                <a class="dropdown-item" href="/login"
+                  ><button class="btn btn-success">Log in</button></a
+                >
+                <%}%>
+              </div>
+            </li>
+          </ul>
+          <div>
+            <form
+              class="form-inline my-2 my-lg-0"
+              method="POST"
+              action="/search"
+            >
+              <span
+                style="
+                  padding: 5px;
+                  background-color: #fff;
+                  border-top-left-radius: 2mm;
+                  border-bottom-left-radius: 2mm;
+                "
+                ><i class="fas fa-search"></i
+              ></span>
+              <input
+                class="search-bar"
+                type="text"
+                id="search-bar"
+                name="keyword"
+                placeholder="Type search"
+              />
+              <span
+                style="
+                  padding: 5px;
+                  background-color: #fff;
+                  border-top-right-radius: 2mm;
+                  border-bottom-right-radius: 2mm;
+                "
+              >
+                <select
+                  name="search_by"
+                  id="search_by"
+                  style="
+                    border: none;
+                    padding: 0px;
+                    background-color: #fff;
+                    color: grey;
+                    border-top-right-radius: 2mm;
+                    border-bottom-right-radius: 2mm;
+                  "
+                >
+                  <option value="name">name</option>
+                  <option value="crime">crime</option>
+                  <option value="mat_no">Mat No.</option>
+                </select>
+              </span>
+            </form>
+            <script src="js/search.js"></script>
+          </div>
         </div>
-     </div>
+      </div>
     </nav>
     <% if(success && success.length > 0){%>
-        <div class="alert alert-success text-center fadeIn animated" id="flash"><%= success %></div>
+    <div class="alert alert-success text-center fadeIn animated" id="flash">
+      <%= success %>
+    </div>
+    <%}%> <% if(error && error.length > 0){%>
+    <div class="alert alert-danger text-center fadeIn animated" id="flash">
+      <%= error %>
+    </div>
+    <%}%> <% if(warning && warning.length > 0){%>
+    <div class="alert alert-warning text-center fadeIn animated" id="flash">
+      <%= warning %>
+    </div>
     <%}%>
-    <% if(error && error.length > 0){%>
-        <div class="alert alert-danger text-center fadeIn animated" id="flash"><%= error %></div>
-    <%}%>
-    <% if(warning && warning.length > 0){%>
-        <div class="alert alert-warning text-center fadeIn animated" id="flash"><%= warning %></div>
-    <%}%>   
     <div class="search-data animated" id="search-data" style="">
-        <big class="text-center">Search Results</big> 
-            <div id="list" style="display:flex;flex-direction: column;">
-                <% data.forEach( (data) =>{%>
-                <p class="fadeIn animated"><a href="/details/<%= data._id%>"><%= data.name %></a></p>
-                <%}) %>
-            </div>
-        </div>
+      <big class="text-center"><strong>Search Results</strong></big>
+      <div id="list" style="display: flex; flex-direction: column">
+        <% data.forEach( (data) =>{%>
+        <p class="fadeIn animated">
+          <a href="/details/<%= data._id%>"><%= data.name %></a>
+        </p>
+        <%}) %>
+      </div>
+    </div>
     <style>
-        .search-bar{
-            padding: 5px;
-            border: none;
-            color: #3c3c3c;
-        }
-        .search-bar:focus{
-            outline: none;
-            background-color: #f7f7f7;
-            border: none;
-        }
-        select:focus{
-            border: none;
-            background-color: #fff;
-        }
-        .search-data{
-            padding: 10px;
-            display: none;
-            position: relative;
-            height: auto;
-            width:100%;
-            background-color: orange;
-            color: #fff;
-            justify-content: center;
-            flex-direction: column;
-        }
-        #list a{
-            color: #f1f1f1 !important;
-        }
+      .search-bar {
+        padding: 5px;
+        border: none;
+        color: #3c3c3c;
+      }
+      .search-bar:focus {
+        outline: none;
+        background-color: #f7f7f7;
+        border: none;
+      }
+      select:focus {
+        border: none;
+        background-color: #fff;
+      }
+      .search-data {
+        padding: 10px;
+        display: none;
+        position: relative;
+        height: auto;
+        width: 100%;
+        background-color: #f3f3f3;
+        color: #3c3c3c;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+      }
+      #list a {
+        color: #3c3c3c !important;
+      }
     </style>
-    <script>
-        const targer = document.getElementById("flash")
-        if(targer.textContent.length > 0){
-            function fadeOut(){
-                targer.style.display = "none"
-            }
-            setTimeout(fadeOut, 3000)
-        }
-    </script>
+    <script></script>
+  </body>
+</html>

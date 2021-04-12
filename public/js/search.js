@@ -17,15 +17,16 @@ $(document).ready(()=>{
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onload = () =>{
             if(xhr.status == 200){
-                $(".search-data").slideDown(300)
+                $(".search-data").slideDown(300);
                 $("#list").html("");
                 $(".loading").removeClass("spinner-border");
-                const required = xhr.responseText;
-                const array = required.split('<div id="list" style="display:flex;flex-direction: column;">')
-                $("#list").append(array[1].split('</div>',1));
-                
+                const required = JSON.parse(xhr.responseText);
+                required.map(data=>{
+                    $("#list").append(`<a href="/dashboard/${data._id}">${data.name} - ${data.matric_number}</a>`);
+                });
             }
-        }
+        };
+
         //this is to make sure that the search bar has at least two characters before sending a request
         if (newParam && newParam != "keyword=" && newParam.length > 10)
             xhr.send(newParam)
