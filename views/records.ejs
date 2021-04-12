@@ -13,7 +13,7 @@
     </form>
   </div>
   <div class="all" style="display: flex; flex-wrap: wrap">
-    <% for(var i = 0; i < cases.length; i++){%>
+    <% if(cases.length){%> <% for(var i = 0; i < cases.length; i++){%>
     <a href="/dashboard/<%= cases[i]._id %>">
       <div
         style="margin: 7px; background: rgba(255, 255, 255, 0.95); color: #000a"
@@ -34,7 +34,9 @@
         </div>
       </div>
     </a>
-    <%}%>
+    <%}%> <% }else{ %>
+    <p>Nothing to show</p>
+    <%} %>
   </div>
 </div>
 

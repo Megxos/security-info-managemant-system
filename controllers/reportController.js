@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const Case = require("../models/cases");
-const imageParser = require("./imageParser");
 const auth = require("../auth/auth").isAdmin;
 const multer = require("multer");
 

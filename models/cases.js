@@ -24,7 +24,7 @@ caseSchema = new mongoose.Schema(
     is_open: { type: Boolean, default: 1 },
     reported_by: String,
     date_committed: Date,
-    date_reported: { type: Date, default: Date.now() },
+    date_reported: { type: Date, default: Date.now },
   },
   { timestamps: true }
 );
