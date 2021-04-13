@@ -6,7 +6,8 @@
       <div class="card">
         <img src="" alt="" class="card-img-left" />
         <div class="card-body text-primary fw-bold fs-3 text-center">
-          Total: <span class="total-value">45</span>
+          Total:
+          <span class="total-value"><%= total %></span>
         </div>
       </div>
     </div>
@@ -14,7 +15,8 @@
       <div class="card">
         <img src="" alt="" class="card-img-left" />
         <div class="card-body text-danger fw-bold fs-3 text-center">
-          Open: <span class="open-value">45</span>
+          Open:
+          <span class="open-value"><%= open %></span>
         </div>
       </div>
     </div>
@@ -22,7 +24,8 @@
       <div class="card">
         <img src="" alt="" class="card-img-left" />
         <div class="card-body text-success fw-bold fs-3 text-center">
-          Closed: <span class="closed-value">45</span>
+          Closed:
+          <span class="closed-value"><%= closed %></span>
         </div>
       </div>
     </div>
@@ -97,4 +100,5 @@
     <%} %>
   </div>
 </div>
+<script src="/js/home.js"></script>
 <%- include("partials/footer"); -%>

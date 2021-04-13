@@ -28,4 +28,20 @@ router.get("/records", auth, async (req, res) => {
   }
 });
 
+router.get("/records/count", auth, async (req, res) => {
+  try {
+    const { record } = req.query;
+    let recordCount = 0;
+    let query = {};
+    if (record == "open") query.is_open = true;
+    else if (record == "closed") query.is_open = false;
+
+    recordCount = await Case.countDocuments(query);
+
+    return res.status(200).send(recordCount);
+  } catch (error) {
+    return res.status(500).send(false);
+  }
+});
+
 module.exports = router;
