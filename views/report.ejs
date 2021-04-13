@@ -39,7 +39,7 @@
                     <div class="col-md-12">
                          <label for="">Description: </label>
                          <div id="description">
-                             <select name="description_1" id="" class="form-control" required>
+                             <select name="crime" id="" class="form-control" required>
                              <ul>
                                 <li><option value="">Select description...</option></li>
                                 <li class="m-3 col-md-12">
@@ -48,8 +48,6 @@
                                  <li class="m-3 col-md-12">
                                      <option value="Exam Malpractice" class="border border-default p-2  " id="crime">Exam Malpractice</option>
                                 </li>
-                                 <li class="m-3 col-md-12">
-                                     <option value="Vanderlized school property" class="border border-default p-2 " id="crime">Vanderlized school property</option></li>
                                  <li class="m-3 col-md-12">
                                      <option value="Assaulted a staff" class="border border-default p-2 " id="crime">Assaulted a staff</option value=""></li>
                                  <li class="m-3 col-md-12">
@@ -70,14 +68,14 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="filr">Add an image</label>
-                        <input type="file" id="file" class="form-control" name="image">
+                        <label for="file">Add an image</label>
+                        <input type="file" id="file" class="form-control" name="image" accept="image/jpg, image/png, image/jpeg">
                     </div>
                 </div>
             </div>
             <div>
-                <label for="description_2">More info / others: </label>
-                <textarea class="form-control mb-2" name="description_2" id="description_2" cols="30" rows="5"></textarea>
+                <label for="description">More info / others: </label>
+                <textarea class="form-control mb-2" name="description" id="description" cols="30" rows="5"></textarea>
             </div>
             <button type="submit" class="btn btn-info btn-lg btn-block" onclick="loading()" >Save
                 <div id="save"></div>

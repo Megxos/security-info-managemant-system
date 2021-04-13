@@ -1,16 +1,3 @@
-body {
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-p {
-  margin: 0;
-  padding: 0;
-  word-wrap: break-word;
-}
-.details {
-  width: 200px;
-  word-wrap: break-word;
-}
 .img-thumbnail {
   max-height: 150px !important;
   max-width: 150px !important;
@@ -18,15 +5,17 @@ p {
 .filter {
   margin: 20px auto;
 }
-.filter select {
+.filter select,
+input,
+button {
   border: none;
   padding: 10px;
   border-radius: 10px;
-  background-color: #fbfbfb;
+  background-color: #fff;
   outline: none;
+  box-shadow: 0 0 10px 0.2px rgba(0, 0, 0, 0.1);
 }
 .filter button {
-  border: none;
-  padding: 7px;
-  border-radius: 10px;
+  background-color: #7b3882;
+  color: #fff;
 }

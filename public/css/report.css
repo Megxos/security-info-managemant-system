@@ -1,5 +1,8 @@
-body {
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
+.form-group {
+  margin-bottom: 5px;
+}
+input,
+select,
+textarea {
+  box-shadow: 0 0 10px 0.2px rgba(0, 0, 0, 0.1) !important;
 }

@@ -6,8 +6,8 @@ caseSchema = new mongoose.Schema(
     matric_number: { type: String, required: true },
     department: { type: String, required: true },
     gender: { type: String, required: true },
-    description_1: { type: String, required: true },
-    description_2: {
+    crime: { type: String, required: true },
+    description: {
       type: String,
       default: "No addidtional detail provided",
     },

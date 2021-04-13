@@ -1,26 +1,38 @@
 body {
-  color: #3c3c3c;
+  color: #5d5d5d !important;
   height: 100vh;
+  background-color: #fbfbfb !important;
 }
-h1 {
+h1,
+h2,
+h3,
+h4 {
   color: #3c3c3c;
   font-weight: 800 !important;
 }
 li {
   list-style: none;
 }
+a {
+  text-decoration: none !important;
+}
+.navbar {
+  box-shadow: 0 5px 10px 0.2px rgba(0, 0, 0, 0.1) !important;
+}
 .img-thumbnail {
-  width: 200px;
+  max-width: 150px !important;
+  max-height: 150px !important;
   border: none;
   padding: 0 !important;
   border-radius: 0 !important;
+  height: 100% !important;
 }
 .section {
   display: grid !important;
   grid-template-columns: 150px auto;
 }
 .active {
-  border-left: 4px solid #fff;
+  border-bottom: 4px solid #fff;
   color: #fff;
 }
 nav * {
@@ -33,4 +45,18 @@ nav * {
 #menu_btn:focus {
   outline: none !important;
   background-color: rgb(185, 4, 185);
+}
+.card {
+  box-shadow: 0 0 10px 0.2px rgba(0, 0, 0, 0.1) !important;
+}
+.input-group-text {
+  background-color: #fff !important;
+}
+select {
+  outline: none;
+  border: none;
+  background-color: #fff;
+}
+input {
+  border: none !important;
 }

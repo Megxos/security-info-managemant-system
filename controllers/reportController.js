@@ -20,22 +20,24 @@ router.post("/report/new", auth, upload.single("image"), async (req, res) => {
     department,
     gender,
     rating,
-    description_1,
-    description_2,
+    crime,
+    description,
   } = req.body;
 
-  newCase = new Case({
-    name: name,
+  const newCase = new Case({
+    name,
     matric_number: matric_no,
-    department: department,
-    gender: gender,
-    rating: rating,
-    description_1: description_1,
-    description_2: description_2,
+    department,
+    gender,
+    rating,
+    crime,
+    description,
   });
 
-  newCase.image.buffer = req.file.buffer;
-  newCase.image.contentType = req.file.mimetype;
+  if (req.file) {
+    newCase.image.buffer = req.file.buffer;
+    newCase.image.contentType = req.file.mimetype;
+  }
 
   const result = await Case.create(newCase);
 

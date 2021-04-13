@@ -4,10 +4,12 @@
   <div class="filter">
     <form action="">
       <select name="filter" id="filter">
+        <option value="">None</option>
         <option value="open">Open</option>
         <option value="closed">Closed</option>
       </select>
       <input type="date" name="from" id="from" />
+      <span> to </span>
       <input type="date" name="to" id="to" />
       <button>Filter</button>
     </form>
@@ -18,7 +20,14 @@
       <div
         style="margin: 7px; background: rgba(255, 255, 255, 0.95); color: #000a"
       >
-        <div class="section" style="box-shadow: 0 0 0.8px #000a; border: none">
+        <div
+          class="section"
+          style="
+            box-shadow: 0 0 10px 0.2px rgba(0, 0, 0, 0.1);
+            border: none;
+            padding: 10px;
+          "
+        >
           <img
             src="data:<%= cases[i].image.contentType%>;base64 ,<%= cases[i].image.buffer.toString('base64') %>"
             alt=""

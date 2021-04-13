@@ -15,7 +15,7 @@
     <script src="/js/lib/bootstrap.min.js"></script>
     <script src="/js/lib/wow.min.js"></script>
     <link rel="stylesheet" href="/css/hamburgers.min.css" />
-    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
   </head>
   <script>
     new WOW().init();
@@ -34,7 +34,7 @@
           id="top_name"
         >
           <img src="/img/logo.png" alt="logo" style="width: 50px" />
-          Security Information System, FUTMINNA
+          Security Information Management System
         </p>
       </a>
     </nav>
@@ -53,9 +53,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="hamburger-box">
-            <span class="hamburger-inner" style="background-color: #fff"></span>
-          </span>
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -67,6 +65,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/records" id="records">Records</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="complaints">Complaints</a>
             </li>
             <li class="nav-item dropdown" id="dropdown">
               <a
@@ -99,47 +100,25 @@
               method="POST"
               action="/search"
             >
-              <span
-                style="
-                  padding: 5px;
-                  background-color: #fff;
-                  border-top-left-radius: 2mm;
-                  border-bottom-left-radius: 2mm;
-                "
-                ><i class="fas fa-search"></i
-              ></span>
-              <input
-                class="search-bar"
-                type="text"
-                id="search-bar"
-                name="keyword"
-                placeholder="Type search"
-              />
-              <span
-                style="
-                  padding: 5px;
-                  background-color: #fff;
-                  border-top-right-radius: 2mm;
-                  border-bottom-right-radius: 2mm;
-                "
-              >
-                <select
-                  name="search_by"
-                  id="search_by"
-                  style="
-                    border: none;
-                    padding: 0px;
-                    background-color: #fff;
-                    color: grey;
-                    border-top-right-radius: 2mm;
-                    border-bottom-right-radius: 2mm;
-                  "
-                >
-                  <option value="name">name</option>
-                  <option value="crime">crime</option>
-                  <option value="mat_no">Mat No.</option>
-                </select>
-              </span>
+              <div class="input-group mb-3">
+                <span class="input-group-text"
+                  ><i class="fas fa-search"></i
+                ></span>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="keyword"
+                  placeholder="search"
+                  id="search-bar"
+                />
+                <span class="input-group-text">
+                  <select name="filter" id="filter">
+                    <option value="name">name</option>
+                    <option value="crime">crime</option>
+                    <option value="mat_no">Mat No.</option>
+                  </select>
+                </span>
+              </div>
             </form>
             <script src="js/search.js"></script>
           </div>
@@ -170,20 +149,6 @@
       </div>
     </div>
     <style>
-      .search-bar {
-        padding: 5px;
-        border: none;
-        color: #3c3c3c;
-      }
-      .search-bar:focus {
-        outline: none;
-        background-color: #f7f7f7;
-        border: none;
-      }
-      select:focus {
-        border: none;
-        background-color: #fff;
-      }
       .search-data {
         padding: 10px;
         display: none;

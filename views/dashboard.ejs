@@ -10,6 +10,7 @@
         class="rounded-circle"
         style="background-color: grey"
         id="photo"
+        height="150"
       />
     </div>
     <p style="text-align: center; font-weight: bold; font-size: larger">
@@ -34,7 +35,7 @@
             data-toggle="modal"
             data-target="#modelId"
           >
-            <i class="fas fa-cog"></i> Settings
+            <i class="fas fa-cog"></i> Status
           </button>
         </li>
         <li id="li_new">
@@ -81,12 +82,10 @@
               </span>
             </div>
             <div class="details">
-              <p>
-                <strong>Crime:</strong> <span><%= detail.description_1%></span>
-              </p>
+              <p><strong>Crime:</strong> <span><%= detail.crime%></span></p>
               <p>
                 <span><strong>Description:</strong> </span> <%=
-                detail.description_2 %>
+                detail.description %>
               </p>
             </div>
           </div>

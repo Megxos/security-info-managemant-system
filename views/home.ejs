@@ -1,66 +1,100 @@
 <%- include("partials/header"); -%>
 <link rel="stylesheet" href="/css/home.css" />
 <div class="container wow fadeIn pt-3" id="container ">
-  <div class="container" id="recently_added mb-5">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="pb-3" style="font-size: x-large">Recently Added Records</h1>
-        <% if(recentFive && recentFive.length > 0){%> <% for(var i =
-        recentFive.length - 1; i >= 0; i--){%>
-        <a href="/dashboard/<%= recentFive[i]._id %>">
-          <div class="img-thumbnail float-left ml-3 mb-2" id="recent">
-            <img
-              src="data:<%= recentFive[i].image.contentType%>;base64 ,<%= recentFive[i].image.buffer.toString('base64') %>"
-              alt="image"
-              class="img-thumbnail"
-            />
-            <div id="details">
-              <div class="info">
-                <p style="width: 100% !important">
-                  <strong>Name: </strong><%= recentFive[i].name %>
-                </p>
-                <p style="width: 100%">
-                  <strong>Reported: </strong><%=
-                  recentFive[i].date_reported.toDateString() %>
-                </p>
-              </div>
-            </div>
-          </div>
-        </a>
-        <%} %> <%}else{%>
-        <p>No data yet</p>
-        <%} %>
+  <div class="row mb-3 mt-3">
+    <div class="col-sm">
+      <div class="card">
+        <img src="" alt="" class="card-img-left" />
+        <div class="card-body text-primary fw-bold fs-3 text-center">
+          Total: <span class="total-value">45</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card">
+        <img src="" alt="" class="card-img-left" />
+        <div class="card-body text-danger fw-bold fs-3 text-center">
+          Open: <span class="open-value">45</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card">
+        <img src="" alt="" class="card-img-left" />
+        <div class="card-body text-success fw-bold fs-3 text-center">
+          Closed: <span class="closed-value">45</span>
+        </div>
       </div>
     </div>
   </div>
-  <div class="container mt-5" id="top_offenders">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="pb-3" style="font-size: x-large">Top Offenders</h1>
-        <% if( topFive && topFive.length > 0){%> <% for(var i in topFive){%>
-        <a href="/details/<%= topFive[i]._id%>">
-          <div class="img-thumbnail rounded float-left ml-3 mb-2" id="top">
-            <img
-              src="data:<%= topFive[i].image.contentType%>;base64 ,<%= topFive[i].image.buffer.toString('base64') %>"
-              alt=""
-              class="img-thumbnail"
-            />
-            <div id="details">
-              <div class="info">
-                <p><strong>Name: </strong><%= topFive[i].name%></p>
-                <p>
-                  <strong>Reported: </strong><%=
-                  topFive[i].date_reported.toDateString() %>
-                </p>
-              </div>
-            </div>
+  <h3>Recent</h3>
+  <div class="recent" style="display: flex; flex-wrap: wrap">
+    <% if(recent.length){%> <% for(var i = 0; i < recent.length; i++){%>
+    <a href="/dashboard/<%= recent[i]._id %>">
+      <div
+        style="margin: 7px; background: rgba(255, 255, 255, 0.95); color: #000a"
+      >
+        <div
+          class="section"
+          style="
+            box-shadow: 0 0 10px 0.2px rgba(0, 0, 0, 0.1);
+            border: none;
+            padding: 10px;
+          "
+        >
+          <img
+            src="data:<%= recent[i].image.contentType%>;base64 ,<%= recent[i].image.buffer.toString('base64') %>"
+            alt=""
+            class="img-thumbnail"
+          />
+          <div class="details" style="padding: 10px">
+            <p><strong>Name:</strong> <span><%= recent[i].name%></span></p>
+            <p>
+              <strong>Matric NO:</strong>
+              <span><%= recent[i].matric_number%></span>
+            </p>
           </div>
-        </a>
-        <%} %> <%} else{%>
-        <p>No data yet</p>
-        <%}%>
+        </div>
       </div>
-    </div>
+    </a>
+    <%}%> <% }else{ %>
+    <p>Nothing to show</p>
+    <%} %>
+  </div>
+
+  <h3>Top offenders</h3>
+  <div class="recent" style="display: flex; flex-wrap: wrap">
+    <% if(top.length){%> <% for(var i = 0; i < top.length; i++){%>
+    <a href="/dashboard/<%= top[i]._id %>">
+      <div
+        style="margin: 7px; background: rgba(255, 255, 255, 0.95); color: #000a"
+      >
+        <div
+          class="section"
+          style="
+            box-shadow: 0 0 10px 0.2px rgba(0, 0, 0, 0.1);
+            border: none;
+            padding: 10px;
+          "
+        >
+          <img
+            src="data:<%= top[i].image.contentType%>;base64 ,<%= top[i].image.buffer.toString('base64') %>"
+            alt=""
+            class="img-thumbnail"
+          />
+          <div class="details" style="padding: 10px">
+            <p><strong>Name:</strong> <span><%= top[i].name%></span></p>
+            <p>
+              <strong>Matric NO:</strong>
+              <span><%= top[i].matric_number%></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </a>
+    <%}%> <% }else{ %>
+    <p>Nothing to show</p>
+    <%} %>
   </div>
 </div>
 <%- include("partials/footer"); -%>
