@@ -6,10 +6,12 @@
   position: absolute;
   left: 0;
   width: 20%;
+  padding-top: 10px;
   background-color: #fff;
-  box-shadow: 0 0 9px rgba(63, 63, 63, 0.667);
+  box-shadow: 0 0 20px rgba(128, 0, 128, 0.4);
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: -1;
 }
 .left-menu img {
   display: block;
@@ -64,7 +66,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  box-shadow: 0 0 10px 0.2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(128, 0, 128, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;

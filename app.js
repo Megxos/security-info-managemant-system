@@ -44,7 +44,8 @@ const homeController = require("./controllers/homeController"),
   detailsController = require("./controllers/dashboardController"),
   updateController = require("./controllers/updateController"),
   register = require("./controllers/registerController"),
-  login = require("./controllers/loginController");
+  login = require("./controllers/loginController"),
+  complaint = require("./controllers/complaintsController");
 
 //connect controllers to server
 app.use(homeController);
@@ -55,6 +56,7 @@ app.use(detailsController);
 app.use(updateController);
 app.use(register);
 app.use(login);
+app.use("/complaints", complaint);
 
 const { LOCAL_PORT } = process.env;
 const port = process.env.PORT || LOCAL_PORT;

@@ -4,6 +4,7 @@
 }
 .filter {
   margin: 20px auto;
+  justify-content: space-between;
 }
 .filter select,
 input,
@@ -14,8 +15,4 @@ button {
   background-color: #fff;
   outline: none;
   box-shadow: 0 0 10px 0.2px rgba(0, 0, 0, 0.1);
-}
-.filter button {
-  background-color: #7b3882;
-  color: #fff;
 }

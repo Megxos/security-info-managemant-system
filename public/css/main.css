@@ -1,3 +1,9 @@
+:root {
+  --bs-danger: #ff5d6d;
+  --bs-primary: #61a1ff;
+  --bs-success: #4ac58c;
+}
+
 body {
   color: #5d5d5d !important;
   height: 100vh;
@@ -12,12 +18,30 @@ h4 {
 }
 li {
   list-style: none;
+  background-color: #fff;
 }
+
 a {
   text-decoration: none !important;
 }
+button {
+  cursor: pointer;
+}
+nav * {
+  transition: 0.1s linear;
+  color: #3c3c3c;
+}
+#top-name {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.7em;
+  padding: 10px;
+  text-align: center;
+}
 .navbar {
-  box-shadow: 0 5px 10px 0.2px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0 10px rgba(128, 0, 128, 0.3) !important;
+  display: block !important;
+  background-color: #fff;
 }
 .img-thumbnail {
   max-width: 150px !important;
@@ -32,22 +56,20 @@ a {
   grid-template-columns: 150px auto;
 }
 .active {
-  border-bottom: 4px solid #fff;
-  color: #fff;
+  border-bottom: 4px solid rgb(128, 0, 128);
+  color: rgb(128, 0, 128) !important;
 }
-nav * {
-  transition: 0.1s linear;
-}
-
-.navbar-dark .container {
+#4ac58c .navbar-dark .container {
   margin-bottom: 0px;
 }
 #menu_btn:focus {
   outline: none !important;
-  background-color: rgb(185, 4, 185);
+  background-color: rgb(128, 0, 128);
 }
 .card {
-  box-shadow: 0 0 10px 0.2px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
+  border: none !important;
+  margin-bottom: 5px;
 }
 .input-group-text {
   background-color: #fff !important;
@@ -57,6 +79,41 @@ select {
   border: none;
   background-color: #fff;
 }
-input {
-  border: none !important;
+
+.blue {
+  color: #61a1ff;
+}
+.blue-bg {
+  background-color: #61a1ff !important;
+}
+.red {
+  color: #ff5d6d;
+}
+.red-bg {
+  background-color: #ff5d6d !important;
+}
+.green {
+  color: #4ac58c;
+}
+.green-bg {
+  background-color: #4ac58c !important;
+}
+.white {
+  color: #fff !important;
+}
+
+.complaints {
+  padding: 0;
+}
+
+.complaints li:nth-of-type(2n) {
+  background-color: #f7f7f7;
+}
+
+.complaint {
+  width: 100%;
+  text-align: start;
+}
+.complaint:focus {
+  box-shadow: none;
 }

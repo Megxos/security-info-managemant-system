@@ -14,40 +14,35 @@ router.get("/report", auth, function (req, res) {
 });
 
 router.post("/report/new", auth, upload.single("image"), async (req, res) => {
-  const {
-    name,
-    matric_no,
-    department,
-    gender,
-    rating,
-    crime,
-    description,
-  } = req.body;
+  try {
+    const { name, matric_no, department, gender, rating, crime, description } =
+      req.body;
 
-  const newCase = new Case({
-    name,
-    matric_number: matric_no,
-    department,
-    gender,
-    rating,
-    crime,
-    description,
-  });
+    const newCase = new Case({
+      name,
+      matric_number: matric_no,
+      department,
+      gender,
+      rating,
+      crime,
+      description,
+    });
 
-  if (req.file) {
-    newCase.image.buffer = req.file.buffer;
-    newCase.image.contentType = req.file.mimetype;
-  }
+    if (req.file) {
+      newCase.image.buffer = req.file.buffer;
+      newCase.image.contentType = req.file.mimetype;
+    }
 
-  const result = await Case.create(newCase);
+    const result = await Case.create(newCase);
 
-  if (!result) {
+    if (!result) throw new Error();
+
+    req.flash("success", "Successfully registered a new case");
+    return res.redirect("/");
+  } catch (error) {
     req.flash("error", "Something went wrong");
     return res.redirect("back");
   }
-
-  req.flash("success", "Successfully registered a new case");
-  return res.redirect("/");
 });
 
 router.get("/addreport/:id", auth, async function (req, res) {

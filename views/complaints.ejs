@@ -1,0 +1,23 @@
+<%- include("partials/header") -%>
+
+<div class="container">
+  <a href="/complaints/new"
+    ><button class="d-bock btn btn-primary mt-2">+ Add New</button></a
+  >
+  <% if(complaints.length){%>
+  <ul class="mt-2 complaints">
+    <% for(i = 0; i < complaints.length; i++){%>
+    <li class="p-2">
+      <button class="btn text-left complaint">
+        <strong>By:</strong> <%= complaints[i].name %> <strong>Date:</strong>
+        <%=complaints[i].date.toDateString() %>
+      </button>
+    </li>
+    <%} %>
+  </ul>
+  <% } else {%>
+  <p class="text-center">No complaints yet</p>
+  <%}%>
+</div>
+
+<%- include("partials/footer") -%>

@@ -10,42 +10,32 @@
       src="https://kit.fontawesome.com/a06d2c416b.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/animate.css" />
     <script src="/js/lib/bootstrap.min.js"></script>
     <script src="/js/lib/wow.min.js"></script>
-    <link rel="stylesheet" href="/css/hamburgers.min.css" />
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
   <script>
     new WOW().init();
   </script>
   <body>
-    <nav class="nav justify-content-center" style="background-color: purple">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <a href="/">
-        <p
-          style="
-            font-weight: bold;
-            font-size: 1.7em;
-            padding: 10px;
-            color: #f1f1f1;
-            text-align: center;
-          "
-          id="top_name"
-        >
+        <p id="top-name">
           <img src="/img/logo.png" alt="logo" style="width: 50px" />
           Security Information Management System
         </p>
       </a>
-    </nav>
-    <nav
-      class="navbar navbar-expand-lg navbar-dark"
-      style="background-color: purple"
-    >
       <div class="container">
         <button
           id="menu_btn"
-          class="navbar-toggler d-lg-none hamburger hamburger--spin-r text-right"
+          class="
+            navbar-toggler
+            d-lg-none
+            hamburger hamburger--spin-r
+            text-right
+          "
           type="button"
           data-toggle="collapse"
           data-target="#collapsibleNavId"
@@ -61,13 +51,12 @@
               <a href="/" class="nav-link active" href="" id="home">Home </a>
             </li>
             <li class="nav-item">
-              <a href="/report" class="nav-link" href="" id="report">Report</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/records" id="records">Records</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="complaints">Complaints</a>
+              <a class="nav-link" href="/complaints" id="complaints"
+                >Complaints</a
+              >
             </li>
             <li class="nav-item dropdown" id="dropdown">
               <a
