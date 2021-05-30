@@ -3,7 +3,7 @@ const router = require("express").Router(),
   auth = require("../auth/auth").isAdmin;
 
 router.get("/records", auth, async (req, res) => {
-  const { filter, from, to } = req.query;
+  const { filter, from, to, page = 1, limit = 10 } = req.query;
   let query_filter = {};
   if (filter == "open") query_filter = { is_open: true };
   else if (filter == "closed") query_filter = { is_open: false };
@@ -15,14 +15,21 @@ router.get("/records", auth, async (req, res) => {
     };
   }
 
-  const cases = await Case.find(query_filter);
+  const cases = await Case.find(query_filter)
+    .limit(limit)
+    .skip((page - 1) * limit)
+    .exec();
 
+  const count = await Case.countDocuments(query_filter);
   if (!cases) {
     req.flash("error", "Could not complete request due to an internal error");
     return res.redirect("back");
   } else {
     return res.render("records", {
       cases,
+      count,
+      page,
+      limit,
       title: "Records",
     });
   }

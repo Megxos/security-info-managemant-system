@@ -50,6 +50,23 @@
     <p>Nothing to show</p>
     <%} %>
   </div>
+  <div class="pagination">
+    <ul class="px-0">
+      <% if(page > 1){%>
+      <a href="?page=<%= page - 1 %>"
+        ><li class="float-start p-2 border-end">Prev</li></a
+      >
+      <% } %> <% for(let i = 0; i < Math.ceil(count / limit); i++){%>
+      <a href="?page=<%= i +1 %>"
+        ><li class="float-start p-2 px-3 border-end"><%= i +1 %></li></a
+      >
+      <%} %> <% if(Math.ceil(count / limit) > 1){%>
+      <a href="?page=<%= Number(page) + 1 %>"
+        ><li class="float-start p-2">Next</li></a
+      >
+      <% } %>
+    </ul>
+  </div>
 </div>
 
 <%- include("partials/footer"); -%>
