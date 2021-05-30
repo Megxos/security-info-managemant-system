@@ -4,8 +4,20 @@ const ComplaintModel = require("../models/complaint");
 const { isAdmin } = require("../auth/auth");
 
 router.get("/", isAdmin, async (req, res) => {
-  const complaints = await ComplaintModel.find();
-  return res.render("complaints", { title: "Complaints", complaints });
+  const { limit = 10, page = 1 } = req.query;
+  const complaints = await ComplaintModel.find()
+    .limit(limit)
+    .skip((page - 1) * limit)
+    .exec();
+
+  const count = await ComplaintModel.countDocuments();
+  return res.render("complaints", {
+    title: "Complaints",
+    complaints,
+    page,
+    limit,
+    count,
+  });
 });
 
 router.post("/", isAdmin, async (req, res) => {
