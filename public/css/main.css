@@ -59,7 +59,7 @@ nav * {
   border-bottom: 4px solid rgb(128, 0, 128);
   color: rgb(128, 0, 128) !important;
 }
-#4ac58c .navbar-dark .container {
+.navbar-dark .container {
   margin-bottom: 0px;
 }
 #menu_btn:focus {
