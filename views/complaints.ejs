@@ -18,6 +18,7 @@
         data-phone_number="<%= complaints[i].phone_number %>"
         data-gender="<%= complaints[i].gender %>"
         data-target="#complaintModal"
+        onclick="populateData()"
       >
         <strong>By:</strong> <%= complaints[i].name %> <strong>Date:</strong>
         <%=complaints[i].date.toDateString() %>
@@ -60,7 +61,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
         <button
           type="button"
           class="btn-close"
@@ -68,19 +69,40 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body">
-        <ul>
-          <li><strong>Name: </strong></li>
-          <li><strong>Gender: </strong></li>
-          <li><strong>Description: </strong></li>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Close
-        </button>
-      </div>
+      <div class="modal-body">Loading...</div>
     </div>
   </div>
 </div>
+<script>
+  function populateData() {
+    const data = this.document.activeElement.dataset;
+    const modalBody = document.querySelector(".modal-body");
+
+    modalBody.innerHTML = `
+        <ul>
+          <li><strong>Name: </strong><br>${data.name}</li>
+          <li><strong>Address: </strong><br>${data.address}</li>
+          <li><strong>Phone Number: </strong><br>${data.phone_number}</li>
+          <li><strong>Gender: </strong><br>${data.gender}</li>
+          <li><strong>Description: </strong><br>${data.description}</li>
+        </ul>`;
+    // const ul = document.createElement("ul");
+
+    // const name = document.createElement("li");
+    // name.innerHTML = data.name;
+    // ul.appendChild(name);
+
+    // const gender = document.createElement("li");
+    // gender.innerHTML = data.gender;
+    // ul.appendChild(gender);
+
+    // const description = document.createElement("li");
+    // description.innerHTML = data.description;
+    // ul.appendChild(description);
+
+    // // clear element content
+    // modalBody.innerHTML = "";
+    // modalBody.appendChild(ul);
+  }
+</script>
 <%- include("partials/footer") -%>
