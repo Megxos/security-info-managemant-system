@@ -1,0 +1,97 @@
+<%- include("./header"); -%>
+    <main class="float-end p-3 position-relative">
+        <div class="breadcrumb">
+            <h1>Complaints</h1>
+        </div>
+        <div class="container">
+      <a href="/complaints/new"
+        ><button class="d-bock btn btn-primary mt-2">+ Add New</button></a
+      >
+      <% if(complaints.length){%>
+      <ul class="mt-2 complaints">
+        <% for(i = 0; i < complaints.length; i++){%>
+        <li class="p-2">
+          <button
+            type="button"
+            class="btn text-left complaint"
+            data-toggle="modal"
+            data-name="<%= complaints[i].name %>"
+            data-description="<%= complaints[i].description %>"
+            data-address="<%= complaints[i].address %>"
+            data-phone_number="<%= complaints[i].phone_number %>"
+            data-gender="<%= complaints[i].gender %>"
+            data-target="#complaintModal"
+            onclick="populateData()"
+          >
+            <strong>By:</strong> <%= complaints[i].name %>
+            <strong>Date:</strong>
+            <%=complaints[i].date.toDateString() %>
+          </button>
+        </li>
+        <%} %>
+      </ul>
+      <% } else {%>
+      <p class="text-center">No complaints yet</p>
+      <%}%>
+      <hr />
+      <div class="pagination">
+        <ul class="px-0">
+          <% if(page > 1){%>
+          <a href="?page=<%= page - 1 %>"
+            ><li class="float-start p-2 border-end">Prev</li></a
+          >
+          <% } %> <% for(let i = 0; i < Math.ceil(count / limit); i++){%>
+          <a href="?page=<%= i +1 %>"
+            ><li class="float-start p-2 px-3 border-end"><%= i +1 %></li></a
+          >
+          <%} %> <% if(Math.ceil(count / limit) > 1 && Math.ceil(count / limit)
+          != Number(page)){%>
+          <a href="?page=<%= Number(page) + 1 %>"
+            ><li class="float-start p-2">Next</li></a
+          >
+          <% } %>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="complaintModal"
+      tabindex="-1"
+      aria-labelledby="complaintModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Loading...</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function populateData() {
+        const data = this.document.activeElement.dataset;
+        const modalBody = document.querySelector(".modal-body");
+
+        modalBody.innerHTML = `
+        <ul>
+          <li><strong>Name: </strong><br>${data.name}</li>
+          <li><strong>Address: </strong><br>${data.address}</li>
+          <li><strong>Phone Number: </strong><br>${data.phone_number}</li>
+          <li><strong>Gender: </strong><br>${data.gender}</li>
+          <li><strong>Description: </strong><br>${data.description}</li>
+        </ul>`;
+      }
+    </script>
+    </main>
+  </body>
+</html>

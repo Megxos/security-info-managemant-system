@@ -1,3 +1,6 @@
+body {
+  overflow: hidden;
+}
 .main {
   position: relative;
 }
@@ -22,6 +25,7 @@
   right: 0;
   width: 80%;
   height: 100vh;
+  overflow-y: auto;
 }
 .actions ul {
   padding: 0;

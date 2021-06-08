@@ -1,0 +1,40 @@
+body {
+  min-height: 100vh;
+  overflow: hidden;
+}
+main {
+  margin-top: 4rem;
+  width: 100%;
+}
+.navbar {
+  height: 4rem;
+  z-index: 5;
+}
+.sidebar {
+  margin-top: 4rem;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+}
+.sidebar-items {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.sidebar-item {
+  padding: 2rem 1rem;
+  border-bottom: 1px solid #dbdbdb;
+  color: inherit;
+}
+.box {
+  padding: 5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+  background-color: #fff;
+  margin: 5px;
+}
+.cards {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex: 1 1;
+}

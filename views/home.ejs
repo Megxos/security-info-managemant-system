@@ -33,7 +33,7 @@
   <h3>Recent</h3>
   <div class="recent" style="display: flex; flex-wrap: wrap">
     <% if(recent.length){%> <% for(var i = 0; i < recent.length; i++){%>
-    <a href="/dashboard/<%= recent[i]._id %>">
+    <a href="/records/<%= recent[i]._id %>">
       <div
         style="margin: 7px; background: rgba(255, 255, 255, 0.95); color: #000a"
       >
@@ -68,7 +68,7 @@
   <h3>Top offenders</h3>
   <div class="recent" style="display: flex; flex-wrap: wrap">
     <% if(top.length){%> <% for(var i = 0; i < top.length; i++){%>
-    <a href="/dashboard/<%= top[i]._id %>">
+    <a href="/records/<%= top[i]._id %>">
       <div
         style="margin: 7px; background: rgba(255, 255, 255, 0.95); color: #000a"
       >

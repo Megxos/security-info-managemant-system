@@ -35,6 +35,23 @@ router.get("/records", auth, async (req, res) => {
   }
 });
 
+router.get("/records/:id", auth, async (req, res) => {
+  try {
+    const record = await Case.findById(req.params.id);
+
+    if (!record) {
+      throw new Error();
+    }
+    return res.render("dashboard", {
+      detail: record,
+      title: record.name,
+    });
+  } catch (error) {
+    req.flash("error", "Something went wrong");
+    return res.redirect("back");
+  }
+});
+
 router.get("/records/count", auth, async (req, res) => {
   try {
     const { record } = req.query;
