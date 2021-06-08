@@ -1,6 +1,9 @@
 const router = require("express").Router();
 const AdminModel = require("../models/admin");
 const ComplaintModel = require("../models/complaint");
+const { isSuperAdmin } = require("../auth/auth");
+
+router.use(isSuperAdmin);
 
 router.get("/", (req, res) =>
   res.render("admin/dashboard", { title: "Super Admin" })
