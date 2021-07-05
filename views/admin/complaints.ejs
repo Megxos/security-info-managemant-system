@@ -4,9 +4,6 @@
             <h1>Complaints</h1>
         </div>
         <div class="container">
-      <a href="/complaints/new"
-        ><button class="d-bock btn btn-primary mt-2">+ Add New</button></a
-      >
       <% if(complaints.length){%>
       <ul class="mt-2 complaints">
         <% for(i = 0; i < complaints.length; i++){%>
@@ -77,21 +74,7 @@
         </div>
       </div>
     </div>
-    <script>
-      function populateData() {
-        const data = this.document.activeElement.dataset;
-        const modalBody = document.querySelector(".modal-body");
-
-        modalBody.innerHTML = `
-        <ul>
-          <li><strong>Name: </strong><br>${data.name}</li>
-          <li><strong>Address: </strong><br>${data.address}</li>
-          <li><strong>Phone Number: </strong><br>${data.phone_number}</li>
-          <li><strong>Gender: </strong><br>${data.gender}</li>
-          <li><strong>Description: </strong><br>${data.description}</li>
-        </ul>`;
-      }
-    </script>
+    <script src="/js/script.js"></script>
     </main>
   </body>
 </html>

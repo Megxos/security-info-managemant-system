@@ -26,6 +26,9 @@ main {
   border-bottom: 1px solid #dbdbdb;
   color: inherit;
 }
+.sidebar-item-text {
+  margin-left: 5px;
+}
 .box {
   padding: 5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
@@ -37,4 +40,12 @@ main {
   width: 100%;
   justify-content: center;
   flex: 1 1;
+}
+
+.sidebar-item li {
+  display: flex;
+  align-items: center;
+}
+.bg-danger {
+  background-color: #ff001863 !important;
 }

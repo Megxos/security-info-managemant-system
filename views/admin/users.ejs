@@ -17,7 +17,8 @@
                 </thead>
                 <tbody>
                     <% for(let i = 0; i < admins.length; i++){%>
-                        <tr>
+                        <% if(!admins[i].is_active){%>
+                            <tr class="bg-danger" title="Deactivated user">
                             <th><%= i+1 %></th>
                             <td><%= admins[i].email %></td>
                             <td>
@@ -32,12 +33,47 @@
                                 <div class="dropdown">
                                     <span class="btn" id="dropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">⁝</span>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownBtn">
-                                    <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/deactivate">Deactivate User</a></li>
+                                    <% if(admins[i].is_active){%>
+                                        <% if(!admins[i].is_super_admin){%>
+                                            <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/deactivate">Deactivate User</a></li>
+                                        <%} %>
+                                    <%}else{%>
+                                        <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/activate">Activate User</a></li>
+                                    <%} %>
                                     <li class="dropdown-item"><a href="/users/<%= admins[i].email %>/forgot-password">Reset password</a></li>
                                 </ul>
                                 </div>
                             </td>
                         </tr>
+                        <%}else{%>
+                                       <tr>
+                            <th><%= i+1 %></th>
+                            <td><%= admins[i].email %></td>
+                            <td>
+                                <% if(admins[i].is_super_admin ){%>
+                                    Super Admin
+                                <%}else{%>
+                                    Admin
+                                <%}%>
+                            </td>
+                            <td><%= admins[i].createdAt.toDateString() %></td>
+                            <td>
+                                <div class="dropdown">
+                                    <span class="btn" id="dropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">⁝</span>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownBtn">
+                                    <% if(admins[i].is_active){%>
+                                        <% if(!admins[i].is_super_admin){%>
+                                            <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/deactivate">Deactivate User</a></li>
+                                        <%} %>
+                                    <%}else{%>
+                                        <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/activate">Activate User</a></li>
+                                    <%} %>
+                                    <li class="dropdown-item"><a href="/users/<%= admins[i].email %>/forgot-password">Reset password</a></li>
+                                </ul>
+                                </div>
+                            </td>
+                        </tr>
+                       <% } %>
                     <%} %>
                 </tbody>
             </table>
@@ -61,5 +97,6 @@
       </div>
         </div>
    </main>
+   <script src="/js/script.js"></script>
 </body>
 </html>

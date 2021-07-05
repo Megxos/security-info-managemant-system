@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
+    <script
+      src="https://kit.fontawesome.com/a06d2c416b.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/lib/jquery-3.4.1.js"></script>
     <script src="/js/lib/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/main.css" />
@@ -12,17 +17,32 @@
   </head>
   <body class="d-flex position-relative">
     <header>
-      <nav class="navbar position-fixed px-2 top-0"></nav>
+      <nav class="navbar position-fixed px-5 top-0">
+        <div class="navbar-brand">
+          <button class="btn"><i class="fas fa-bars"></i></button>
+        </div>
+      </nav>
     </header>
     <aside class="sidebar position-sticky">
       <ul class="sidebar-items">
-        <a href="/dashboard" class="sidebar-item"><li>Dashboard</li></a>
-        <a href="/home" class="sidebar-item"><li>Home</li></a>
-        <a href="/dashboard/users" class="sidebar-item"><li>Users</li></a>
-        <a href="/dashboard/complaints" class="sidebar-item"
-          ><li>Complaints</li></a
+        <a href="/dashboard" class="sidebar-item"
+          ><li>
+            <i class="fas fa-chart-line"></i>
+            <span class="sidebar-item-text">Dashboard</span>
+          </li></a
         >
-        <a href="#" class="sidebar-item"><li>Records</li></a>
+        <a href="/home" class="sidebar-item"
+          ><li>
+            <i class="fas fa-home"></i>
+            <span class="sidebar-item-text">Home</span>
+          </li></a
+        >
+        <a href="/dashboard/users" class="sidebar-item"
+          ><li>
+            <i class="fas fa-users"></i>
+            <span class="sidebar-item-text">Users</span>
+          </li></a
+        >
       </ul>
     </aside>
   </body>

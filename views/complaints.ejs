@@ -73,19 +73,4 @@
     </div>
   </div>
 </div>
-<script>
-  function populateData() {
-    const data = this.document.activeElement.dataset;
-    const modalBody = document.querySelector(".modal-body");
-
-    modalBody.innerHTML = `
-        <ul>
-          <li><strong>Name: </strong><br>${data.name}</li>
-          <li><strong>Address: </strong><br>${data.address}</li>
-          <li><strong>Phone Number: </strong><br>${data.phone_number}</li>
-          <li><strong>Gender: </strong><br>${data.gender}</li>
-          <li><strong>Description: </strong><br>${data.description}</li>
-        </ul>`;
-  }
-</script>
 <%- include("partials/footer") -%>

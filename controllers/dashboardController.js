@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const AdminModel = require("../models/admin");
+const UserModel = require("../models/user");
 const ComplaintModel = require("../models/complaint");
 const { isSuperAdmin } = require("../auth/auth");
 
@@ -12,12 +12,12 @@ router.get("/", (req, res) =>
 router.get("/users", async (req, res) => {
   try {
     const { page = 1, limit = 10 } = req.query;
-    const admins = await AdminModel.find()
+    const admins = await UserModel.find()
       .limit(limit)
       .skip((page - 1) * limit)
       .exec();
 
-    const count = await AdminModel.countDocuments();
+    const count = await UserModel.countDocuments();
 
     return res.render("admin/users", { admins, count, page, limit });
   } catch (error) {

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { compare } = require("bcryptjs");
-const AdminModel = require("../models/admin");
+const UserModel = require("../models/user");
 
 router.get("/login", (req, res) => {
   res.render("auth/login", { title: "Login - Admin" });
@@ -10,7 +10,7 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const admin = await AdminModel.findOne({ email });
+    const admin = await UserModel.findOne({ email });
 
     if (!admin) {
       req.flash("error", "Invalid credentials");

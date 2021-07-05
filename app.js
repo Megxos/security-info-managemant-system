@@ -1,7 +1,7 @@
-require("./config/config")();
+require("./config/database")();
 const express = require("express"),
   flash = require("connect-flash"),
-  Admin = require("./models/admin");
+  Admin = require("./models/user");
 
 const app = express();
 
@@ -38,6 +38,7 @@ const homeController = require("./controllers/homeController"),
   register = require("./controllers/registerController"),
   login = require("./controllers/loginController"),
   complaint = require("./controllers/complaintsController");
+const userController = require("./controllers/userController");
 
 //connect controllers to server
 app.use(homeController);
@@ -46,8 +47,9 @@ app.use(recordsController);
 app.use(searchController);
 app.use("/dashboard", dashboardController);
 app.use(updateController);
-app.use(register);
+app.use("/register", register);
 app.use(login);
 app.use("/complaints", complaint);
+app.use("/users", userController);
 
 module.exports = app;

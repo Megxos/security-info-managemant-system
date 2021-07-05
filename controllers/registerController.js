@@ -1,23 +1,26 @@
 const router = require("express").Router();
 const { hash } = require("bcryptjs");
-const AdminModel = require("../models/admin");
+const UserModel = require("../models/user");
+const { isSuperAdmin } = require("../auth/auth");
 
-router.get("/register", (req, res) => {
-  res.render("auth/register", { title: "Register - Admin" });
-});
+router.use(isSuperAdmin);
 
-router.post("/register", async (req, res) => {
+router.get("/", (req, res) =>
+  res.render("auth/register", { title: "Register - Admin" })
+);
+
+router.post("/", async (req, res) => {
   //getting data sent in the form
   let { email, password } = req.body;
 
   password = await hash(password, 10);
 
-  const newAdmin = new AdminModel({
+  const newAdmin = new UserModel({
     password,
     email,
   });
 
-  const admin = await AdminModel.create(newAdmin);
+  const admin = await UserModel.create(newAdmin);
 
   if (!admin) {
     req.flash("error", "Something went wrong");
