@@ -3,7 +3,7 @@
         <div class="breadcrumb"><h1>Users</h1></div>
         <div class="main">
             <div class="actions">
-                <a href="/register"><button class="btn btn-primary">+ Add New</button></a>
+                <a href="/auth/register"><button class="btn btn-primary">+ Add New</button></a>
             </div>
             <table class="table table-striped">
                 <thead>
@@ -33,6 +33,7 @@
                                 <div class="dropdown">
                                     <span class="btn" id="dropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">⁝</span>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownBtn">
+                                    <li class="dropdown-item"><a href="/auth/forgot-password?email=<%= admins[i].email %>">Reset password</a></li>
                                     <% if(admins[i].is_active){%>
                                         <% if(!admins[i].is_super_admin){%>
                                             <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/deactivate">Deactivate User</a></li>
@@ -40,7 +41,7 @@
                                     <%}else{%>
                                         <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/activate">Activate User</a></li>
                                     <%} %>
-                                    <li class="dropdown-item"><a href="/users/<%= admins[i].email %>/forgot-password">Reset password</a></li>
+                                      <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/delete" class="text-danger">Delete user</a></li>
                                 </ul>
                                 </div>
                             </td>
@@ -61,14 +62,15 @@
                                 <div class="dropdown">
                                     <span class="btn" id="dropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">⁝</span>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownBtn">
+                                   <li class="dropdown-item"><a href="/auth/forgot-password?email=<%= admins[i].email %>">Reset password</a></li>
                                     <% if(admins[i].is_active){%>
                                         <% if(!admins[i].is_super_admin){%>
                                             <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/deactivate">Deactivate User</a></li>
+                                             <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/delete" class="text-danger">Delete user</a></li>
                                         <%} %>
                                     <%}else{%>
                                         <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/activate">Activate User</a></li>
                                     <%} %>
-                                    <li class="dropdown-item"><a href="/users/<%= admins[i].email %>/forgot-password">Reset password</a></li>
                                 </ul>
                                 </div>
                             </td>

@@ -1,13 +1,22 @@
 const router = require("express").Router();
 const UserModel = require("../models/user");
 const ComplaintModel = require("../models/complaint");
+const ReportModel = require("../models/cases");
 const { isSuperAdmin } = require("../auth/auth");
 
 router.use(isSuperAdmin);
 
-router.get("/", (req, res) =>
-  res.render("admin/dashboard", { title: "Super Admin" })
-);
+router.get("/", async (req, res) => {
+  try {
+    const reports = await ReportModel.countDocuments();
+    const open = await ReportModel.countDocuments({ is_open: true });
+    const closed = await ReportModel.countDocuments({ is_open: false });
+    const complaints = await ComplaintModel.countDocuments();
+    return res.status(200).json({ reports, complaints, open, closed });
+  } catch (error) {
+    return res.status(500).send(false);
+  }
+});
 
 router.get("/users", async (req, res) => {
   try {

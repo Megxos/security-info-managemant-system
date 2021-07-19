@@ -1,34 +1,12 @@
 <%- include("partials/header"); -%>
+<script src="js/lib/chart.min.js"></script>
 <div class="container wow fadeIn pt-3" id="container ">
-  <div class="row mb-3 mt-3">
-    <div class="col-sm">
-      <div class="card blue-bg">
-        <img src="" alt="" class="card-img-left" />
-        <div class="card-body white fw-bold fs-3 text-center">
-          Total:
-          <span class="total-value"><%= total %></span>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card red-bg">
-        <img src="" alt="" class="card-img-left" />
-        <div class="card-body white fw-bold fs-3 text-center">
-          Open:
-          <span class="open-value"><%= open %></span>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card green-bg">
-        <img src="" alt="" class="card-img-left" />
-        <div class="card-body white fw-bold fs-3 text-center">
-          Closed:
-          <span class="closed-value"><%= closed %></span>
-        </div>
-      </div>
-    </div>
+  <div class="canvas-container">
+    <canvas id="myChart"></canvas>
+
+    <canvas id="reports"></canvas>
   </div>
+
   <h3>Recent</h3>
   <div class="recent" style="display: flex; flex-wrap: wrap">
     <% if(recent.length){%> <% for(var i = 0; i < recent.length; i++){%>
@@ -99,4 +77,5 @@
     <%} %>
   </div>
 </div>
+<script src="js/dashboard.js"></script>
 <%- include("partials/footer"); -%>

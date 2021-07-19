@@ -35,8 +35,7 @@ const homeController = require("./controllers/homeController"),
   searchController = require("./controllers/searchController"),
   dashboardController = require("./controllers/dashboardController"),
   updateController = require("./controllers/updateController"),
-  register = require("./controllers/registerController"),
-  login = require("./controllers/loginController"),
+  authController = require("./controllers/authController"),
   complaint = require("./controllers/complaintsController");
 const userController = require("./controllers/userController");
 
@@ -47,8 +46,7 @@ app.use(recordsController);
 app.use(searchController);
 app.use("/dashboard", dashboardController);
 app.use(updateController);
-app.use("/register", register);
-app.use(login);
+app.use("/auth", authController);
 app.use("/complaints", complaint);
 app.use("/users", userController);
 

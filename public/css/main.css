@@ -39,6 +39,20 @@ nav * {
   transition: 0.1s linear;
   color: #3c3c3c;
 }
+canvas {
+  max-width: 50%;
+  max-height: 100%;
+}
+.canvas-container {
+  height: 400px;
+  display: flex;
+  margin: 10px 0;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 2mm;
+  box-shadow: 0 0 10px 0.2px rgb(0 0 0 / 10%);
+  flex-wrap: wrap;
+}
 #top-name {
   margin: 0;
   font-weight: bold;
