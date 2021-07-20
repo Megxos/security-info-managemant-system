@@ -1,7 +1,13 @@
 <%- include("partials/header"); -%>
 <link rel="stylesheet" href="/css/report.css">
 <div class="container mb-3" id="container">
-    <h1 class="text-center mb-3 mt-2">RECORD NEW CASE</h1>
+    <button
+    class="btn btn-secondary btn-sm m-2"
+    onclick="window.history.back()"
+    >
+    <i class="fas fa-arrow-left"></i> Back
+    </button>
+    <h1 class="text-center mb-3 mt-2">Add New Record</h1>
     <div>
         <form name="report_form" action="/report/new" method="POST" enctype="multipart/form-data">
             <div class="form-group">
@@ -26,8 +32,9 @@
                     </div>
                     <div class="col-md-6">
                         <label for="">Gender</label>
-                        <select name="gender" id="gender" class="form-control" readonly disabled required>
-                            <option value="<%= report.gender %>"><%= report.gender %></option>
+                        <select name="gender" id="gender" class="form-control" readonly required>
+                            <option disabled>Gender...</option>
+                            <option value="<%= report.gender %>" selected style="text-transform: capitalize;"><%= report.gender %></option>
                         </select>
                     </div>
                 </div>
@@ -37,10 +44,10 @@
                     <div class="col-md-12">
                         <label for="">Description: </label>
                         <div id="description">
-                            <select name="description_1" id="" class="form-control" required>
+                            <select name="crime" id="" class="form-control" required>
                                 <ul>
                                     <li>
-                                        <option value="">Select description...</option>
+                                        <option selected disabled>Select description...</option>
                                     </li>
                                     <li class="m-3 col-md-12">
                                         <option value="Vanderlized school property"
@@ -77,8 +84,8 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="filr">Add an image</label>
-                        <input type="file" id="file" class="form-control" name="image">
+                        <label for="filr">Add images</label>
+                        <input type="file" id="file" class="form-control" name="images" multiple accept="*/png,*/jpg,*/jpeg">
                     </div>
                 </div>
             </div>
@@ -87,8 +94,7 @@
                 <textarea class="form-control mb-2" name="description_2" id="description_2" cols="30"
                     rows="5"></textarea>
             </div>
-            <button type="submit" class="btn btn-info btn-lg btn-block" onclick="loading()">Save
-                <div id="save"></div>
+            <button type="submit" class="btn btn-primary btn-block">Save <i class="fas fa-save"></i>
             </button>
         </form>
     </div>

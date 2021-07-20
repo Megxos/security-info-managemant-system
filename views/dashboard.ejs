@@ -1,32 +1,11 @@
 <%- include("partials/header"); -%>
+<script src="/js/lib/chart.min.js"></script>
 <link rel="stylesheet" href="/css/dashboard.css" />
 
 <div class="main">
   <div class="left-menu">
-    <div class="profile-photo">
-      <% if(detail.image.contentType){%>
-      <img
-        src="data:<%= detail.image.contentType%>;base64 ,<%= detail.image.buffer.toString('base64') %>"
-        alt=""
-        class="rounded-circle"
-        style="background-color: grey"
-        id="photo"
-        height="150"
-      />
-      <%}else{%>
-      <img src="/img/user.png" alt="" class="img-thumbnail" />
-      <%} %>
-    </div>
-    <p style="text-align: center; font-weight: bold; font-size: larger">
-      <%= detail.name %>
-    </p>
     <div class="actions">
       <ul>
-        <li id="li_profile" class="selected-border">
-          <button onclick="getProfile()">
-            <i class="fas fa-user"></i> Profile
-          </button>
-        </li>
         <li id="li_settings">
           <button
             type="button"
@@ -40,7 +19,7 @@
         <li id="li_new">
           <a href="/addreport/<%= detail._id%>">
             <button type="button" class="">
-              <i class="fas fa-plus"></i> Add new report
+              <i class="fas fa-plus"></i> Add new record
             </button>
           </a>
         </li>
@@ -59,6 +38,16 @@
   </div>
   <div class="details-dash" id="details-dash">
     <div class="profile" id="profile">
+      <div class="row">
+        <div class="col-md-6">
+          <button
+            class="btn btn-sm btn-secondary m-2"
+            onclick="window.history.back()"
+          >
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-6">
           <div class="info">
@@ -112,7 +101,7 @@
               <% }else{%>
               <span class="text-success">
                 <i class="fas fa-lock fa-7x"></i>
-                <p>status</p>
+                <p>Status</p>
               </span>
               <%} %>
             </div>
@@ -122,17 +111,34 @@
                 class="text-center text-danger"
                 style="font-size: xx-large; line-height: 300px"
               >
-                <strong>Open</strong>
+                <strong>OPEN</strong>
               </p>
               <%}else{%>
               <p
                 class="text-center text-success"
                 style="font-size: xx-large; line-height: 300px"
               >
-                <strong>Closed</strong>
+                <strong>CLOSED</strong>
               </p>
               <%} %>
             </div>
+            <!-- <div class="details">
+              <canvas id="crimeChart"></canvas>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="info">
+            <% if(detail.images.length){ %> <% for(let i = 0; i <
+            detail.images.length; i++){%>
+            <img
+              src="data:<%= detail.images[i].contentType%>;base64 ,<%= detail.images[i].buffer.toString('base64') %>"
+              alt=""
+              height="250"
+            />
+            <%}%> <%}else{%> No images provided <%}%>
           </div>
         </div>
       </div>
@@ -196,7 +202,11 @@
     </div>
   </div>
 </div>
+<script src="/js/dashboard.js"></script>
 <script>
+  const href = window.location.href.split("/");
+  // getCrimeData(href[href.length - 1]);
+
   const actions = $(".actions");
 
   $(".actions li").on("click", function () {

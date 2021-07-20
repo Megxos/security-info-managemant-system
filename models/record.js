@@ -11,17 +11,19 @@ caseSchema = new mongoose.Schema(
       type: String,
       default: "No addidtional detail provided",
     },
-    image: {
-      url: String,
-      id: String,
-      contentType: String,
-      buffer: Buffer,
-    },
+    images: [
+      {
+        url: String,
+        id: String,
+        contentType: String,
+        buffer: Buffer,
+      },
+    ],
     rating: {
       type: Number,
       default: 1,
     },
-    is_open: { type: Boolean, default: 1 },
+    is_open: { type: Boolean, default: true },
     reported_by: String,
     date_committed: Date,
     date_reported: { type: Date, default: Date.now },

@@ -19,6 +19,7 @@ router.get("/records", auth, async (req, res) => {
   const cases = await RecordModel.find(query_filter)
     .limit(limit)
     .skip((page - 1) * limit)
+    .sort("-createdAt")
     .exec();
 
   const count = await RecordModel.countDocuments(query_filter);
@@ -33,6 +34,21 @@ router.get("/records", auth, async (req, res) => {
       limit,
       title: "Records",
     });
+  }
+});
+
+router.get("/records/:crime_id/data", async (req, res) => {
+  try {
+    const { crime_id } = req.params;
+    const record = await RecordModel.findById(crime_id);
+
+    const records = await RecordModel.find({
+      matric_number: record.matric_number,
+    });
+
+    return res.status(200).json(records);
+  } catch (error) {
+    return res.status(500).send(false);
   }
 });
 
@@ -62,25 +78,31 @@ router.get("/records/:id/print", async (req, res) => {
       req.flash("error", "Record not found");
       return res.redirect("back");
     }
-    // pdf image source
-    let imageSrc = `http://${req.hostname}:${
-      req.socket.address().port
-    }/img/user.png`;
 
-    if (record.image.contentType)
-      imageSrc = `data:${
-        record.image.contentType
-      };base64,${record.image.buffer.toString("base64")}`;
+    // pdf image source
+    let images = "";
+
+    if (record.images.length) {
+      for (let i = 0; i < record.images.length; i++) {
+        images += `<img src="data:${
+          record.images[i].contentType
+        };base64,${record.images[i].buffer.toString(
+          "base64"
+        )}"  alt="photo of ${record.name}" height="150" />`;
+      }
+    } else {
+      images = `<img src="http://${req.hostname}:${
+        req.socket.address().port
+      }/img/user.png"  alt="photo of ${record.name}" height="150"/>`;
+    }
 
     const html = `
     <h1 style="text-align:center;">Crime Record</h1>
     <p style="padding:10px 30px;">
-    <style>th{text-align:left;}img{display:block;margin-left:auto;margin-bottom:10px;}</style>
-      <img
-          src="${imageSrc}"
-          alt="photo of ${record.name}"
-          height="100"
-        />
+    <style>th{text-align:left;}.images{display:flex;flex-wrap:wrap;justify-content:space-between;margin-bottom:10px;}img{width:150px;}</style>
+     <div class="images">
+       ${images}
+     </div>
     <table>
         <tr>
           <th>Id</th>

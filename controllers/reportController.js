@@ -13,37 +13,53 @@ router.get("/report", auth, function (req, res) {
   res.render("report", { title: "Report" });
 });
 
-router.post("/report/new", auth, upload.single("image"), async (req, res) => {
-  try {
-    const { name, matric_no, department, gender, rating, crime, description } =
-      req.body;
+router.post(
+  "/report/new",
+  auth,
+  upload.array("images", 3),
+  async (req, res) => {
+    try {
+      const {
+        name,
+        matric_no,
+        department,
+        gender,
+        rating,
+        crime,
+        description,
+      } = req.body;
 
-    const newCase = new Case({
-      name,
-      matric_number: matric_no,
-      department,
-      gender,
-      rating,
-      crime,
-      description,
-    });
+      const newCase = new Case({
+        name,
+        matric_number: matric_no,
+        department,
+        gender,
+        rating,
+        crime,
+        description,
+      });
 
-    if (req.file) {
-      newCase.image.buffer = req.file.buffer;
-      newCase.image.contentType = req.file.mimetype;
+      if (req.files.length) {
+        newCase.images = req.files.map((file) => {
+          return {
+            contentType: file.mimetype,
+            buffer: file.buffer,
+          };
+        });
+      }
+
+      const result = await Case.create(newCase);
+
+      if (!result) throw new Error();
+
+      req.flash("success", "Successfully registered a new case");
+      return res.redirect("/");
+    } catch (error) {
+      req.flash("error", error.message);
+      return res.redirect("back");
     }
-
-    const result = await Case.create(newCase);
-
-    if (!result) throw new Error();
-
-    req.flash("success", "Successfully registered a new case");
-    return res.redirect("/");
-  } catch (error) {
-    req.flash("error", "Something went wrong");
-    return res.redirect("back");
   }
-});
+);
 
 router.get("/addreport/:id", auth, async function (req, res) {
   const id = req.params.id;

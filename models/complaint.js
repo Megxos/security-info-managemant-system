@@ -3,8 +3,8 @@ const { model, Schema } = require("mongoose");
 const complaintSchema = new Schema(
   {
     name: { type: String, required: true },
-    matric_no: { type: String, required: true },
-    department: { type: String, required: true },
+    matric_no: { type: String },
+    department: { type: String },
     phone_number: { type: Number, required: true },
     address: { type: String, required: true },
     description: { type: String, required: true },

@@ -1,4 +1,5 @@
 require("./config/database")();
+require("./services/SuperAdmin/create").createSuperAdmin();
 const express = require("express"),
   flash = require("connect-flash"),
   Admin = require("./models/user");

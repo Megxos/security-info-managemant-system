@@ -8,6 +8,7 @@ router.get("/", isAdmin, async (req, res) => {
   const complaints = await ComplaintModel.find()
     .limit(limit)
     .skip((page - 1) * limit)
+    .sort("-createdAt")
     .exec();
 
   const count = await ComplaintModel.countDocuments();

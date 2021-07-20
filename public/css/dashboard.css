@@ -1,31 +1,22 @@
 body {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 .main {
-  position: relative;
+  display: flex;
 }
 .left-menu {
-  height: 100vh;
-  position: absolute;
-  left: 0;
   width: 20%;
   padding-top: 10px;
   background-color: #fff;
-  box-shadow: 0 0 20px rgba(128, 0, 128, 0.4);
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-}
-.left-menu img {
-  display: block;
-  margin: 5px auto;
+  box-shadow: 0 0 15px rgba(128, 0, 128, 0.4);
 }
 .details-dash {
-  position: absolute;
-  right: 0;
-  width: 80%;
-  height: 100vh;
+  width: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
+  height: 900px;
 }
 .actions ul {
   padding: 0;
@@ -59,21 +50,21 @@ body {
 
 /* Profile  styles starts here */
 .profile {
-  position: relative;
+  height: 1100px;
 }
 .profile .info {
   background-color: #ffffff;
   color: #585b5d;
   height: 300px;
-  margin: 20px;
-  position: relative;
+  margin: 5px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  box-shadow: 0 0 15px rgba(128, 0, 128, 0.2);
-  display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  box-shadow: 0 0 10px rgba(128, 0, 128, 0.1);
   align-items: center;
+  border-radius: 2mm;
+}
+.info img {
+  border-radius: 2mm;
 }
 .profile .icon {
   /* border-right: 1px solid grey; */
@@ -94,11 +85,9 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-/* .info .title{
-    position: absolute;
-    top: 0;
-    width: 100%;
-} */
+.row {
+  --bs-gutter-x: 0;
+}
 
 @media (max-width: 965px) {
   .profile .icon {

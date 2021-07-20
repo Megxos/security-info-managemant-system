@@ -64,6 +64,7 @@ canvas {
   display: block !important;
   background-color: #fff;
   width: 100%;
+  z-index: 10;
 }
 .img-thumbnail {
   max-width: 150px !important;

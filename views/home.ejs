@@ -1,5 +1,5 @@
 <%- include("partials/header"); -%>
-<script src="js/lib/chart.min.js"></script>
+<script src="/js/lib/chart.min.js"></script>
 <div class="container wow fadeIn pt-3" id="container ">
   <div class="canvas-container">
     <canvas id="myChart"></canvas>
@@ -7,7 +7,7 @@
     <canvas id="reports"></canvas>
   </div>
 
-  <h3>Recent</h3>
+  <h3>Recently Added</h3>
   <div class="recent" style="display: flex; flex-wrap: wrap">
     <% if(recent.length){%> <% for(var i = 0; i < recent.length; i++){%>
     <a href="/records/<%= recent[i]._id %>">
@@ -22,9 +22,9 @@
             padding: 10px;
           "
         >
-          <% if(recent[i].image.contentType){%>
+          <% if(recent[i].images.length){%>
           <img
-            src="data:<%= recent[i].image.contentType%>;base64 ,<%= recent[i].image.buffer.toString('base64') %>"
+            src="data:<%= recent[i].images[0].contentType%>;base64 ,<%= recent[i].images[0].buffer.toString('base64') %>"
             alt=""
             class="img-thumbnail"
           />
@@ -46,7 +46,7 @@
     <%} %>
   </div>
 
-  <h3>Top offenders</h3>
+  <!-- <h3>Top offenders</h3>
   <div class="recent" style="display: flex; flex-wrap: wrap">
     <% if(top.length){%> <% for(var i = 0; i < top.length; i++){%>
     <a href="/records/<%= top[i]._id %>">
@@ -61,9 +61,9 @@
             padding: 10px;
           "
         >
-          <% if(top[i].image.contentType){%>
+          <% if(top[i].images.length){%>
           <img
-            src="data:<%= top[i].image.contentType%>;base64 ,<%= top[i].image.buffer.toString('base64') %>"
+            src="data:<%= top[i].images[0].contentType%>;base64 ,<%= top[i].images[0].buffer.toString('base64') %>"
             alt=""
             class="img-thumbnail"
           />
@@ -83,7 +83,10 @@
     <%}%> <% }else{ %>
     <p>Nothing to show</p>
     <%} %>
-  </div>
+  </div> -->
 </div>
 <script src="js/dashboard.js"></script>
+<script>
+  getDashboardData();
+</script>
 <%- include("partials/footer"); -%>

@@ -3,7 +3,7 @@ const xhr = new XMLHttpRequest();
 let complaints = 0,
   reports = 0;
 
-function getDashboardData() {
+const getDashboardData = () => {
   xhr.open("GET", "/dashboard", true);
   xhr.responseType = "json";
   xhr.onload = function () {
@@ -49,8 +49,8 @@ function getDashboardData() {
           {
             label: "Records",
             data: [data.open, data.closed],
-            backgroundColor: ["#dc3545", "#198754"],
-            borderColor: ["#dc3545", "#198754"],
+            backgroundColor: ["rgba(255, 50, 80, 1)", "rgba(37, 189, 94, 1)"],
+            borderColor: ["rgba(255, 50, 80, 1)", "rgba(37, 189, 94, 1)"],
             borderWidth: 1,
           },
         ],
@@ -71,5 +71,44 @@ function getDashboardData() {
     });
   };
   xhr.send();
-}
-getDashboardData();
+};
+
+const getCrimeData = (crime_id) => {
+  xhr.open("GET", `/records/${crime_id}/data`, true);
+
+  xhr.responseType = "json";
+  xhr.onload = function () {
+    const crimes = xhr.response;
+
+    var crimeId = document.getElementById("crimeChart").getContext("2d");
+    var crimeChart = new Chart(crimeId, {
+      type: "line",
+      data: {
+        labels: crimes.map((crime) => crime.date_reported),
+        datasets: [
+          {
+            label: "Crime History",
+            data: [20, 10],
+            borderColor: ["rgba(255, 50, 80, 1)"],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: "Crime History",
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+  };
+
+  xhr.send();
+};
