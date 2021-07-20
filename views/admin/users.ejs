@@ -41,7 +41,7 @@
                                     <%}else{%>
                                         <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/activate">Activate User</a></li>
                                     <%} %>
-                                      <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/delete" class="text-danger">Delete user</a></li>
+                                      <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/delete" class="text-danger" data-user="<%= admins[i]._id %>">Delete user</a></li>
                                 </ul>
                                 </div>
                             </td>
@@ -66,7 +66,7 @@
                                     <% if(admins[i].is_active){%>
                                         <% if(!admins[i].is_super_admin){%>
                                             <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/deactivate">Deactivate User</a></li>
-                                             <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/delete" class="text-danger">Delete user</a></li>
+                                             <li class="dropdown-item"><a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteUser('<%= admins[i]._id %>')">Delete user</a></li>
                                         <%} %>
                                     <%}else{%>
                                         <li class="dropdown-item"><a href="/users/<%= admins[i]._id %>/activate">Activate User</a></li>
@@ -99,6 +99,29 @@
       </div>
         </div>
    </main>
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this user?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <a href="" id="deleteBtn"><button type="button" class="btn btn-danger">Delete</button></a>
+      </div>
+    </div>
+  </div>
+</div>
    <script src="/js/script.js"></script>
+   <script>
+        function deleteUser(id){
+            document.getElementById("deleteBtn").href = `/users/${id}/delete`;
+        }
+    </script>
 </body>
 </html>

@@ -36,7 +36,7 @@ const search = () => {
       const required = JSON.parse(xhr.response);
       required.map((data) => {
         $("#list").append(
-          `<a href="/dashboard/${data._id}">${data.name} - ${data.matric_number}</a>`
+          `<a href="/records/${data._id}">${data.name} - ${data.matric_number}</a>`
         );
       });
     }

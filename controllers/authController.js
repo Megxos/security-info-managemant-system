@@ -76,7 +76,7 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const admin = await UserModel.findOne({ email });
+    const admin = await UserModel.findOne({ email, is_active: true });
 
     if (!admin) {
       req.flash("error", "Invalid credentials");

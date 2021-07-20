@@ -22,11 +22,15 @@
             padding: 10px;
           "
         >
+          <% if(recent[i].image.contentType){%>
           <img
             src="data:<%= recent[i].image.contentType%>;base64 ,<%= recent[i].image.buffer.toString('base64') %>"
             alt=""
             class="img-thumbnail"
           />
+          <%}else{%>
+          <img src="/img/user.png" alt="" class="img-thumbnail" />
+          <%} %>
           <div class="details" style="padding: 10px">
             <p><strong>Name:</strong> <span><%= recent[i].name%></span></p>
             <p>
@@ -57,11 +61,15 @@
             padding: 10px;
           "
         >
+          <% if(top[i].image.contentType){%>
           <img
             src="data:<%= top[i].image.contentType%>;base64 ,<%= top[i].image.buffer.toString('base64') %>"
             alt=""
             class="img-thumbnail"
           />
+          <%}else{%>
+          <img src="/img/user.png" alt="" class="img-thumbnail" />
+          <%} %>
           <div class="details" style="padding: 10px">
             <p><strong>Name:</strong> <span><%= top[i].name%></span></p>
             <p>

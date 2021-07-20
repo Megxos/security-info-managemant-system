@@ -1,5 +1,5 @@
 const router = require("express").Router(),
-  Case = require("../models/cases"),
+  Case = require("../models/record"),
   auth = require("../auth/auth").isAdmin;
 
 router.get("/", auth, function (req, res) {

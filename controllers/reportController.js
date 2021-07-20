@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Case = require("../models/cases");
+const Case = require("../models/record");
 const auth = require("../auth/auth").isAdmin;
 const multer = require("multer");
 

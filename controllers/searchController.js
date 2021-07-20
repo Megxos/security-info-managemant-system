@@ -1,6 +1,6 @@
 require("dotenv").config();
 const router = require("express").Router(),
-  Case = require("../models/cases"),
+  Case = require("../models/record"),
   mongoose = require("mongoose");
 
 router.use(require("body-parser").urlencoded({ extended: true }));
@@ -19,7 +19,8 @@ router.post("/search", async (req, res) => {
       matches = cases.filter(
         (result) =>
           (result.description_1 && result.description_1.includes(keyword)) ||
-          (result.description_2 && result.description_2.includes(keyword))
+          (result.description_2 && result.description_2.includes(keyword)) ||
+          (result.crime && result.crime.includes(keyword))
       );
 
       res.status(200).send(matches);

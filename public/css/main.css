@@ -37,7 +37,6 @@ button {
 }
 nav * {
   transition: 0.1s linear;
-  color: #3c3c3c;
 }
 canvas {
   max-width: 50%;

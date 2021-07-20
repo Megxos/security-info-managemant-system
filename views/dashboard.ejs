@@ -4,6 +4,7 @@
 <div class="main">
   <div class="left-menu">
     <div class="profile-photo">
+      <% if(detail.image.contentType){%>
       <img
         src="data:<%= detail.image.contentType%>;base64 ,<%= detail.image.buffer.toString('base64') %>"
         alt=""
@@ -12,6 +13,9 @@
         id="photo"
         height="150"
       />
+      <%}else{%>
+      <img src="/img/user.png" alt="" class="img-thumbnail" />
+      <%} %>
     </div>
     <p style="text-align: center; font-weight: bold; font-size: larger">
       <%= detail.name %>
@@ -37,6 +41,16 @@
           <a href="/addreport/<%= detail._id%>">
             <button type="button" class="">
               <i class="fas fa-plus"></i> Add new report
+            </button>
+          </a>
+        </li>
+        <li id="li_print">
+          <a
+            href="/records/<%= detail._id%>/print"
+            download="crime_<%= detail._id %>.pdf"
+          >
+            <button type="button" class="">
+              <i class="fas fa-print"></i> Print
             </button>
           </a>
         </li>

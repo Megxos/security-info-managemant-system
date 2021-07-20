@@ -1,10 +1,8 @@
 const router = require("express").Router();
 const UserModel = require("../models/user");
 const ComplaintModel = require("../models/complaint");
-const ReportModel = require("../models/cases");
+const ReportModel = require("../models/record");
 const { isSuperAdmin } = require("../auth/auth");
-
-router.use(isSuperAdmin);
 
 router.get("/", async (req, res) => {
   try {
@@ -18,7 +16,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/users", async (req, res) => {
+router.get("/users", isSuperAdmin, async (req, res) => {
   try {
     const { page = 1, limit = 10 } = req.query;
     const admins = await UserModel.find()
@@ -35,7 +33,7 @@ router.get("/users", async (req, res) => {
   }
 });
 
-router.get("/complaints", async (req, res) => {
+router.get("/complaints", isSuperAdmin, async (req, res) => {
   try {
     const { page = 1, limit = 10 } = req.query;
     const complaints = await ComplaintModel.find()
