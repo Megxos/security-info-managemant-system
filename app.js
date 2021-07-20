@@ -3,6 +3,7 @@ require("./services/SuperAdmin/create").createSuperAdmin();
 const express = require("express"),
   flash = require("connect-flash"),
   Admin = require("./models/user");
+const { MulterError } = require("multer");
 
 const app = express();
 
@@ -50,5 +51,14 @@ app.use(updateController);
 app.use("/auth", authController);
 app.use("/complaints", complaint);
 app.use("/users", userController);
+
+// handle multer error
+app.use(function (err, req, res, next) {
+  if (err instanceof MulterError && err.code === "LIMIT_UNEXPECTED_FILE") {
+    req.flash("error", `${err.message}: max of 3 images allowed`);
+    return res.redirect("back");
+  }
+  return next();
+});
 
 module.exports = app;
